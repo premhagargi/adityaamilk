@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import SectionEyebrow from "@/components/SectionEyebrow";
+
+export const metadata: Metadata = {
+  title: "Terms & Conditions",
+  description:
+    "Terms & Conditions for adityaamilk.com and Vijaykant Dairy and Food Products Limited — use of the site, orders, delivery, returns, quality standards and governing law.",
+  alternates: { canonical: "/terms" },
+  robots: { index: true, follow: true },
+};
 
 const sections = [
   {

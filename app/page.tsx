@@ -2,6 +2,7 @@ import Link from "next/link";
 import Placeholder from "@/components/Placeholder";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import ProductCard from "@/components/ProductCard";
+import Reveal from "@/components/Reveal";
 import { products, achievements } from "@/lib/data";
 import {
   ShieldCheck,
@@ -97,7 +98,7 @@ export default function HomePage() {
       {/* ABOUT SNIPPET */}
       <section className="bg-cream-50 py-28">
         <div className="container-x grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
-          <div>
+          <Reveal>
             <SectionEyebrow>Our Heritage</SectionEyebrow>
             <h2 className="mt-5 font-display text-[38px] font-medium leading-tight text-blue-900">
               Built beside the Malaprabha,
@@ -123,9 +124,9 @@ export default function HomePage() {
             >
               Read the full story <ArrowRight size={16} />
             </Link>
-          </div>
+          </Reveal>
 
-          <div className="relative">
+          <Reveal delay={0.15} className="relative">
             <Placeholder
               label="Factory · Neginhal"
               caption="Tetra Pak line, warm light"
@@ -140,14 +141,14 @@ export default function HomePage() {
                 </span>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* PRODUCT HIGHLIGHTS */}
       <section className="bg-cream-100 py-28">
         <div className="container-x">
-          <div className="flex flex-col items-start justify-between gap-5 md:flex-row md:items-end">
+          <Reveal className="flex flex-col items-start justify-between gap-5 md:flex-row md:items-end">
             <div>
               <SectionEyebrow>Our Range</SectionEyebrow>
               <h2 className="mt-5 max-w-[560px] font-display text-[38px] font-medium leading-tight text-blue-900">
@@ -158,26 +159,28 @@ export default function HomePage() {
               From everyday toned milk to slow-reduced ghee and Mysore Pak —
               thirteen products, one standard.
             </p>
-          </div>
+          </Reveal>
 
           <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
-            {featured.map((p) => (
-              <ProductCard key={p.slug} product={p} />
+            {featured.map((p, i) => (
+              <Reveal key={p.slug} delay={i * 0.08}>
+                <ProductCard product={p} />
+              </Reveal>
             ))}
           </div>
 
-          <div className="mt-12 flex justify-center">
+          <Reveal className="mt-12 flex justify-center">
             <Link href="/products" className="btn-secondary">
               See all 13 products
             </Link>
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* QUALITY CHAIN */}
       <section className="bg-cream-50 py-28">
         <div className="container-x">
-          <div className="max-w-prose">
+          <Reveal className="max-w-prose">
             <SectionEyebrow>Farmer to Consumer</SectionEyebrow>
             <h2 className="mt-5 font-display text-[38px] font-medium leading-tight text-blue-900">
               A short, well-watched journey.
@@ -186,14 +189,14 @@ export default function HomePage() {
               Every drop of Adityaa milk passes through five tightly controlled
               stages and 21 laboratory tests before it reaches your fridge.
             </p>
-          </div>
+          </Reveal>
 
           <div className="relative mt-16">
             {/* dashed connector */}
             <div className="absolute left-0 right-0 top-7 hidden h-px border-t border-dashed border-gold-500/40 md:block" />
             <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
               {qualityChain.map((step, i) => (
-                <div key={step.label} className="relative">
+                <Reveal key={step.label} delay={i * 0.1} className="relative">
                   <div className="flex h-14 w-14 items-center justify-center rounded-full border border-gold-500/50 bg-cream-50 font-display text-lg text-blue-900">
                     {String(i + 1).padStart(2, "0")}
                   </div>
@@ -203,7 +206,7 @@ export default function HomePage() {
                   <p className="mt-2 text-[13px] leading-relaxed text-ink-600">
                     {step.body}
                   </p>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -234,22 +237,21 @@ export default function HomePage() {
           </div>
 
           <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-3">
-            {achievements.slice(0, 3).map((a) => (
-              <div
-                key={a.title}
-                className="group rounded-lg border border-white/10 bg-white/[0.04] p-7 transition-all duration-200 ease-premium hover:-translate-y-[2px] hover:border-gold-500/40 hover:bg-white/[0.07]"
-              >
-                <Award size={22} className="text-gold-400" strokeWidth={1.5} />
-                <div className="mt-4 font-display text-[14px] italic text-gold-400">
-                  {a.year}
+            {achievements.slice(0, 3).map((a, i) => (
+              <Reveal key={a.title} delay={i * 0.1}>
+                <div className="group h-full rounded-lg border border-white/10 bg-white/[0.04] p-7 transition-all duration-200 ease-premium hover:-translate-y-[2px] hover:border-gold-500/40 hover:bg-white/[0.07]">
+                  <Award size={22} className="text-gold-400" strokeWidth={1.5} />
+                  <div className="mt-4 font-display text-[14px] italic text-gold-400">
+                    {a.year}
+                  </div>
+                  <h3 className="mt-1 font-display text-[20px] font-medium text-cream-50">
+                    {a.title}
+                  </h3>
+                  <p className="mt-3 text-[13.5px] leading-relaxed text-cream-50/70">
+                    {a.body}
+                  </p>
                 </div>
-                <h3 className="mt-1 font-display text-[20px] font-medium text-cream-50">
-                  {a.title}
-                </h3>
-                <p className="mt-3 text-[13.5px] leading-relaxed text-cream-50/70">
-                  {a.body}
-                </p>
-              </div>
+              </Reveal>
             ))}
           </div>
 
@@ -274,7 +276,7 @@ export default function HomePage() {
                 <path
                   d="M40 40 L160 50 L170 90 L150 130 L170 160 L120 170 L80 160 L50 140 L30 100 Z"
                   fill="#F8F5ED"
-                  stroke="#0A2540"
+                  stroke="#27398F"
                   strokeWidth="1.2"
                 />
                 <circle cx="70" cy="80" r="5" fill="#C9A227" />
@@ -283,7 +285,7 @@ export default function HomePage() {
                   x="80"
                   y="84"
                   fontSize="9"
-                  fill="#0A2540"
+                  fill="#27398F"
                   fontWeight="600"
                 >
                   Belagavi

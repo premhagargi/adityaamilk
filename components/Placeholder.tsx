@@ -42,7 +42,7 @@ export default function Placeholder({
         className="absolute inset-0 opacity-[0.04]"
         style={{
           backgroundImage:
-            "radial-gradient(circle at 20% 30%, rgba(10,37,64,0.4) 0%, transparent 60%), radial-gradient(circle at 80% 70%, rgba(201,162,39,0.3) 0%, transparent 55%)",
+            "radial-gradient(circle at 20% 30%, rgba(39,57,143,0.4) 0%, transparent 60%), radial-gradient(circle at 80% 70%, rgba(201,162,39,0.3) 0%, transparent 55%)",
         }}
       />
       <div className="absolute inset-0 flex flex-col justify-between p-5">

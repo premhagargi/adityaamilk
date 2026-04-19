@@ -1,7 +1,21 @@
+import type { Metadata } from "next";
 import Placeholder from "@/components/Placeholder";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { achievements } from "@/lib/data";
 import { Award } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Achievements",
+  description:
+    "Recognition earned by Adityaa Milk — Hindustan Unilever (Wall's) global team visit, India SME 100 Awards, India Small Giant Award 2018, Gold at the Great Indian Ice Cream Contest.",
+  alternates: { canonical: "/achievements" },
+  openGraph: {
+    title: "Achievements · Adityaa Milk",
+    description:
+      "Awards are the by-product of daily discipline — here are some of ours.",
+    url: "/achievements",
+  },
+};
 
 export default function AchievementsPage() {
   return (

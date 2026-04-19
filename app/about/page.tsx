@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Placeholder from "@/components/Placeholder";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { qcTests } from "@/lib/data";
@@ -9,6 +10,19 @@ import {
   Check,
   ExternalLink,
 } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "About Us",
+  description:
+    "Adityaa Milk is a brand of Vijaykant Dairy and Food Products Limited — built beside the Malaprabha in Belagavi, Karnataka. Imported Swedish and Italian machinery, 21-point quality protocol, ISO 22000:2005 and FSSAI certified.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    title: "About Us · Adityaa Milk",
+    description:
+      "A Karnataka dairy built on imported precision, a 21-point quality protocol, and three decades of honest work.",
+    url: "/about",
+  },
+};
 
 const principles = [
   {

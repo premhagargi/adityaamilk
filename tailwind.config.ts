@@ -10,9 +10,9 @@ const config: Config = {
     extend: {
       colors: {
         blue: {
-          900: "#0A2540",
-          800: "#0F2B5B",
-          600: "#1E3A66",
+          900: "#27398F",
+          800: "#1F2F7A",
+          600: "#3A4CA8",
         },
         gold: {
           500: "#C9A227",
@@ -36,8 +36,8 @@ const config: Config = {
         display: ["var(--font-fraunces)", "Georgia", "serif"],
       },
       boxShadow: {
-        soft: "0 1px 2px rgba(10,37,64,0.04), 0 8px 24px rgba(10,37,64,0.06)",
-        lift: "0 2px 4px rgba(10,37,64,0.06), 0 16px 40px rgba(10,37,64,0.10)",
+        soft: "0 1px 2px rgba(39,57,143,0.05), 0 8px 24px rgba(39,57,143,0.08)",
+        lift: "0 2px 4px rgba(39,57,143,0.08), 0 16px 40px rgba(39,57,143,0.12)",
       },
       borderRadius: {
         xs: "4px",
