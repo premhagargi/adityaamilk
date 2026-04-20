@@ -6,7 +6,14 @@ import ProductCard from "@/components/ProductCard";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { products } from "@/lib/data";
 
-const categories = ["All", "Milk", "Curd & Cultured", "Sweets", "Fats"] as const;
+const categories = [
+  "All",
+  "Milk",
+  "Flavoured Milk",
+  "Curd & Cultured",
+  "Sweets",
+  "Fats",
+] as const;
 
 export default function ProductsPage() {
   const [active, setActive] = useState<(typeof categories)[number]>("All");
@@ -20,7 +27,7 @@ export default function ProductsPage() {
           <SectionEyebrow>Our Products</SectionEyebrow>
           <div className="mt-6 flex flex-col justify-between gap-10 md:flex-row md:items-end">
             <h1 className="max-w-[640px] font-display text-[48px] font-medium leading-tight text-blue-900">
-              Thirteen everyday essentials, measured to one standard.
+              {products.length} everyday essentials, measured to one standard.
             </h1>
             <p className="max-w-sm text-[16px] leading-relaxed text-ink-600">
               From the first pour of morning milk to slow-reduced khoa, each

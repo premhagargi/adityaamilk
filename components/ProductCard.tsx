@@ -1,15 +1,16 @@
-import Placeholder from "./Placeholder";
+import Image from "next/image";
 import type { Product } from "@/lib/data";
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
     <article className="group card-base overflow-hidden p-6">
-      <div className="overflow-hidden rounded-md">
-        <Placeholder
-          label={product.name}
-          ratio="4/5"
-          tone="mixed"
-          className="transition-transform duration-500 ease-premium group-hover:scale-[1.03]"
+      <div className="relative aspect-[4/5] overflow-hidden rounded-md border border-line bg-gradient-to-br from-cream-100 via-cream-50 to-white">
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
+          className="object-contain p-4 transition-transform duration-500 ease-premium group-hover:scale-[1.04]"
         />
       </div>
       <div className="mt-5">

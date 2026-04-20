@@ -1,9 +1,17 @@
+export type ProductCategory =
+  | "Milk"
+  | "Flavoured Milk"
+  | "Curd & Cultured"
+  | "Sweets"
+  | "Fats";
+
 export type Product = {
   slug: string;
   name: string;
-  category: "Milk" | "Curd & Cultured" | "Sweets" | "Fats";
+  category: ProductCategory;
   description: string;
   meta: string;
+  image: string;
 };
 
 export const products: Product[] = [
@@ -14,6 +22,7 @@ export const products: Product[] = [
     description:
       "Light, everyday milk with balanced fat for daily Indian households.",
     meta: "200ml · 500ml · 1L",
+    image: "/products/2.png",
   },
   {
     slug: "standardized-milk",
@@ -22,6 +31,7 @@ export const products: Product[] = [
     description:
       "Consistent fat and SNF levels, ideal for tea, coffee and family use.",
     meta: "500ml · 1L",
+    image: "/products/3.png",
   },
   {
     slug: "full-cream-milk",
@@ -30,6 +40,52 @@ export const products: Product[] = [
     description:
       "Rich, creamy milk with a full-bodied taste — a breakfast classic.",
     meta: "500ml · 1L",
+    image: "/products/4.png",
+  },
+  {
+    slug: "badam-milk",
+    name: "Badam Milk",
+    category: "Flavoured Milk",
+    description:
+      "Chilled, lightly sweet milk steeped with ground almonds and saffron.",
+    meta: "180ml · 200ml",
+    image: "/products/Badam Milk Bottle.png",
+  },
+  {
+    slug: "chocolate-milk",
+    name: "Chocolate Milk",
+    category: "Flavoured Milk",
+    description:
+      "Creamy dairy milk with rich cocoa — a classic after-school pour.",
+    meta: "180ml · 200ml",
+    image: "/products/Chocolate Milk Bottle.png",
+  },
+  {
+    slug: "butterscotch-milk",
+    name: "Butterscotch Milk",
+    category: "Flavoured Milk",
+    description:
+      "Buttery-sweet flavoured milk with a warm caramel finish.",
+    meta: "180ml · 200ml",
+    image: "/products/Butterskotch - Flavoured Milk.png",
+  },
+  {
+    slug: "pista-milk",
+    name: "Pista Milk",
+    category: "Flavoured Milk",
+    description:
+      "Cool pistachio milk with a delicate nuttiness and a gentle sweetness.",
+    meta: "180ml · 200ml",
+    image: "/products/Pista Milk Bottle.png",
+  },
+  {
+    slug: "kulfi-milk",
+    name: "Kulfi Flavoured Milk",
+    category: "Flavoured Milk",
+    description:
+      "All the notes of traditional kulfi — cardamom, nuts, slow-reduced milk — in a chilled bottle.",
+    meta: "180ml · 200ml",
+    image: "/products/Kulfi - Flavored Milk.png",
   },
   {
     slug: "curd",
@@ -38,6 +94,7 @@ export const products: Product[] = [
     description:
       "Thick, naturally set curd with a clean, homemade character.",
     meta: "200g · 400g · 1kg",
+    image: "/products/WhatsApp Image 2026-04-19 at 12.09.28.jpeg",
   },
   {
     slug: "pot-curd",
@@ -46,6 +103,7 @@ export const products: Product[] = [
     description:
       "Set in traditional earthen pots, with the mellow, creamy finish of old Karnataka kitchens.",
     meta: "400g · 1kg",
+    image: "/products/WhatsApp Image 2026-04-19 at 12.10.18.jpeg",
   },
   {
     slug: "fresh-curd",
@@ -54,14 +112,7 @@ export const products: Product[] = [
     description:
       "Delivered within hours of setting, for a bright and lively taste.",
     meta: "200g · 400g",
-  },
-  {
-    slug: "shrikhand",
-    name: "Shrikhand",
-    category: "Sweets",
-    description:
-      "Hung curd sweetened gently and perfumed with saffron and cardamom.",
-    meta: "250g · 500g",
+    image: "/products/WhatsApp Image 2026-04-19 at 12.10.18 (1).jpeg",
   },
   {
     slug: "paneer",
@@ -70,6 +121,7 @@ export const products: Product[] = [
     description:
       "Soft, milky paneer pressed in small batches — never rubbery.",
     meta: "200g · 500g · 1kg",
+    image: "/products/WhatsApp Image 2026-04-19 at 12.10.19.jpeg",
   },
   {
     slug: "lassi",
@@ -78,6 +130,7 @@ export const products: Product[] = [
     description:
       "Thick, sweet curd drink — chilled, silky, lightly spiced.",
     meta: "200ml · 500ml",
+    image: "/products/WhatsApp Image 2026-04-19 at 12.11.20.jpeg",
   },
   {
     slug: "buttermilk",
@@ -86,6 +139,7 @@ export const products: Product[] = [
     description:
       "Cooling masala buttermilk with curry leaves, ginger and a gentle salt.",
     meta: "200ml · 500ml · 1L",
+    image: "/products/WhatsApp Image 2026-04-19 at 12.11.21.jpeg",
   },
   {
     slug: "ghee",
@@ -94,6 +148,16 @@ export const products: Product[] = [
     description:
       "Golden, grainy, slow-cooked ghee from the cream of our own milk.",
     meta: "200ml · 500ml · 1L",
+    image: "/products/Ghee Bottle.jpg.jpeg",
+  },
+  {
+    slug: "shrikhand",
+    name: "Shrikhand",
+    category: "Sweets",
+    description:
+      "Hung curd sweetened gently and perfumed with saffron and cardamom.",
+    meta: "250g · 500g",
+    image: "/products/Shrikand 1.jpeg",
   },
   {
     slug: "mysore-pak",
@@ -102,6 +166,7 @@ export const products: Product[] = [
     description:
       "A soft, porous Mysore Pak, melt-in-mouth, hand-cut in small trays.",
     meta: "250g · 500g",
+    image: "/products/WhatsApp Image 2026-04-19 at 12.11.21 (1).jpeg",
   },
   {
     slug: "khoa-mava",
@@ -110,6 +175,43 @@ export const products: Product[] = [
     description:
       "Slow-reduced khoa for halwais and home kitchens that value the old way.",
     meta: "250g · 500g · 1kg",
+    image: "/products/6.png",
+  },
+  {
+    slug: "dharwad-pedha",
+    name: "Dharwad Pedha",
+    category: "Sweets",
+    description:
+      "The iconic grainy pedha of North Karnataka — slow-cooked, gently caramelised.",
+    meta: "250g · 500g",
+    image: "/products/Dharwad pedha Box Mockup.jpg.jpeg",
+  },
+  {
+    slug: "kaju-katli",
+    name: "Kaju Katli",
+    category: "Sweets",
+    description:
+      "Fine cashew fudge with a whisper of silver leaf — classic, clean, festive.",
+    meta: "250g · 500g",
+    image: "/products/kaju katli final.png",
+  },
+  {
+    slug: "kunda",
+    name: "Kunda",
+    category: "Sweets",
+    description:
+      "Belagavi's beloved caramelised milk sweet, cooked down the slow, old way.",
+    meta: "250g · 500g",
+    image: "/products/Kunda Box Mockup.jpg.jpeg",
+  },
+  {
+    slug: "milk-cake",
+    name: "Milk Cake",
+    category: "Sweets",
+    description:
+      "Dense, grainy milk cake with a deep, roasted-milk character.",
+    meta: "250g · 500g",
+    image: "/products/Milk cake Box Mockup.jpg.jpeg",
   },
 ];
 
@@ -164,45 +266,14 @@ export const qcTests = [
   "Phosphatase test",
 ];
 
-export const parlours = [
-  {
-    name: "Adityaa Parlour — Tilakwadi",
-    city: "Belagavi",
-    pincode: "590006",
-    address: "Shop 14, RPD Cross, Tilakwadi, Belagavi",
-    phone: "+91 99002 55556",
-    km: 0.9,
-  },
-  {
-    name: "Adityaa Parlour — Mahantesh Nagar",
-    city: "Belagavi",
-    pincode: "590016",
-    address: "Opp. LIG 159, Mahantesh Nagar, Belagavi",
-    phone: "+91 99002 55556",
-    km: 1.4,
-  },
-  {
-    name: "Adityaa Parlour — Bailhongal Main",
-    city: "Bailhongal",
-    pincode: "591102",
-    address: "Main Road, Bailhongal, Dist. Belagavi",
-    phone: "+91 99002 55556",
-    km: 36.2,
-  },
-  {
-    name: "Adityaa Parlour — Hubballi Central",
-    city: "Hubballi",
-    pincode: "580020",
-    address: "Gokul Road, Near Unkal, Hubballi",
-    phone: "+91 99002 55556",
-    km: 102.6,
-  },
-  {
-    name: "Adityaa Parlour — Dharwad Campus",
-    city: "Dharwad",
-    pincode: "580003",
-    address: "Saptapur Circle, Dharwad",
-    phone: "+91 99002 55556",
-    km: 74.1,
-  },
-];
+import parloursData from "./parlours.json";
+
+export type Parlour = {
+  name: string;
+  state: string;
+  city: string;
+  address: string;
+  contact: string;
+};
+
+export const parlours: Parlour[] = parloursData as Parlour[];

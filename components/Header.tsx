@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Phone, Menu, X } from "lucide-react";
@@ -52,23 +53,33 @@ export default function Header() {
         scrolled ? "h-[72px] border-b border-line shadow-soft" : "h-[88px]"
       }`}
     >
-      <div className="container-x flex h-full items-center justify-between">
-        <Link href="/" className="flex items-center gap-3" aria-label="Adityaa Milk — Home">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-900">
-            <span className="font-display text-lg italic text-gold-400">A</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <span className="font-display text-xl font-medium tracking-tight text-blue-900">
-              Adityaa Milk
-            </span>
-            <span className="hidden h-5 w-px bg-line md:block" />
-            <span className="hidden text-[10.5px] font-semibold uppercase tracking-eyebrow text-gold-500 md:block">
-              Quality · Health · Hygiene
-            </span>
-          </div>
+      <div className="container-x flex h-full items-center gap-6">
+        <Link
+          href="/"
+          className="flex shrink-0 items-center gap-3"
+          aria-label="Adityaa Milk — Home"
+        >
+          <Image
+            src="/images/adityaalogo.png"
+            alt="Adityaa Milk"
+            width={48}
+            height={48}
+            priority
+            className="h-10 w-10 object-contain"
+          />
+          <span className="font-display text-[19px] font-medium leading-none tracking-tight text-blue-900">
+            Adityaa Milk
+          </span>
+          <span className="hidden h-5 w-px bg-line xl:block" />
+          <span className="hidden text-[10.5px] font-semibold uppercase leading-none tracking-eyebrow text-gold-500 xl:inline">
+            Quality · Health · Hygiene
+          </span>
         </Link>
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+        <nav
+          className="ml-auto hidden items-center gap-6 xl:gap-8 lg:flex"
+          aria-label="Primary"
+        >
           {nav.map((n) => {
             const active = isActive(pathname, n.href);
             return (
@@ -76,7 +87,7 @@ export default function Header() {
                 key={n.href}
                 href={n.href}
                 aria-current={active ? "page" : undefined}
-                className={`group relative text-[15px] font-medium transition-colors ${
+                className={`group relative whitespace-nowrap text-[14.5px] font-medium leading-none transition-colors ${
                   active ? "text-blue-900" : "text-blue-900/80 hover:text-blue-900"
                 }`}
               >
@@ -91,16 +102,18 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="ml-auto flex shrink-0 items-center gap-3 lg:ml-0 lg:gap-4">
           <a
             href="tel:+919900255556"
-            className="hidden items-center gap-2 text-[14px] text-blue-900 lg:flex"
+            className="hidden items-center gap-2 whitespace-nowrap text-[13.5px] leading-none text-blue-900 xl:flex"
           >
-            <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
-            <Phone size={14} strokeWidth={1.5} />
+            <Phone size={13} strokeWidth={1.5} />
             +91 99002 55556
           </a>
-          <Link href="/contact" className="btn-primary hidden lg:inline-flex">
+          <Link
+            href="/contact"
+            className="btn-primary hidden whitespace-nowrap lg:inline-flex"
+          >
             Enquire Now
           </Link>
           <button

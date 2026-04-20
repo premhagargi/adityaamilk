@@ -157,7 +157,7 @@ export default function HomePage() {
             </div>
             <p className="max-w-sm text-[15px] text-ink-600">
               From everyday toned milk to slow-reduced ghee and Mysore Pak —
-              thirteen products, one standard.
+              {` ${products.length} products, one standard.`}
             </p>
           </Reveal>
 
@@ -171,7 +171,7 @@ export default function HomePage() {
 
           <Reveal className="mt-12 flex justify-center">
             <Link href="/products" className="btn-secondary">
-              See all 13 products
+              See all {products.length} products
             </Link>
           </Reveal>
         </div>

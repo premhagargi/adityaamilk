@@ -71,7 +71,7 @@ const organizationSchema = {
   name: "Vijaykant Dairy and Food Products Limited",
   alternateName: "Adityaa Milk",
   url: SITE_URL,
-  logo: `${SITE_URL}/icon.svg`,
+  logo: `${SITE_URL}/images/adityaalogo.png`,
   slogan: "Quality, Health and Hygiene",
   foundingDate: "1994",
   foundingLocation: "Belagavi, Karnataka, India",

@@ -1,24 +1,55 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useMemo, useState } from "react";
 import SectionEyebrow from "@/components/SectionEyebrow";
-import { parlours } from "@/lib/data";
+import { parlours, type Parlour } from "@/lib/data";
 import { MapPin, Search, Navigation, Phone } from "lucide-react";
+
+type IndexedParlour = Parlour & {
+  id: string;
+  pincode: string;
+  searchBlob: string;
+};
+
+const indexed: IndexedParlour[] = parlours.map((p, i) => {
+  const pincodeMatch = p.address.match(/\b\d{6}\b/);
+  const pincode = pincodeMatch ? pincodeMatch[0] : "";
+  const id = `${i}-${p.name}-${p.city}`.toLowerCase().replace(/\s+/g, "-");
+  const searchBlob = [p.name, p.state, p.city, p.address, p.contact, pincode]
+    .join(" ")
+    .toLowerCase();
+  return { ...p, id, pincode, searchBlob };
+});
+
+const quickCities = Array.from(
+  new Set(indexed.map((p) => p.city))
+)
+  .filter((c) => ["BELAGAVI", "BAILHONGAL", "HUBLI", "DHARWAD", "BANGALORE", "KOLHAPUR"].includes(c))
+  .slice(0, 6);
+
+function titleCase(str: string) {
+  return str
+    .toLowerCase()
+    .split(/\s+/)
+    .map((w) => (w ? w[0].toUpperCase() + w.slice(1) : w))
+    .join(" ");
+}
 
 export default function FindParlourPage() {
   const [query, setQuery] = useState("");
-  const [activeId, setActiveId] = useState<string>(parlours[0].name);
+  const [activeId, setActiveId] = useState<string>(indexed[0].id);
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return parlours;
-    return parlours.filter(
-      (p) =>
-        p.city.toLowerCase().includes(q) ||
-        p.pincode.includes(q) ||
-        p.name.toLowerCase().includes(q)
+    if (!q) return indexed;
+    const tokens = q.split(/\s+/).filter(Boolean);
+    return indexed.filter((p) =>
+      tokens.every((t) => p.searchBlob.includes(t))
     );
   }, [query]);
+
+  const active =
+    indexed.find((p) => p.id === activeId) ?? filtered[0] ?? indexed[0];
 
   return (
     <>
@@ -29,7 +60,8 @@ export default function FindParlourPage() {
             Find Adityaa near you.
           </h1>
           <p className="mt-4 max-w-[520px] text-[16px] leading-relaxed text-ink-600">
-            Search by pincode or city across North Karnataka.
+            Search by pincode, city, area or parlour name across Karnataka &
+            Maharashtra.
           </p>
         </div>
       </section>
@@ -45,38 +77,50 @@ export default function FindParlourPage() {
                   <input
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    placeholder="Enter pincode or city"
+                    placeholder="Enter pincode, city, area or parlour name"
                     className="flex-1 bg-transparent py-3 text-[15px] focus:outline-none"
                   />
+                  {query && (
+                    <button
+                      onClick={() => setQuery("")}
+                      className="text-[12px] text-ink-400 hover:text-blue-900"
+                      aria-label="Clear search"
+                    >
+                      Clear
+                    </button>
+                  )}
                 </div>
                 <div className="mt-3 flex flex-wrap gap-2">
-                  {["Belagavi", "Bailhongal", "Hubballi", "Dharwad"].map(
-                    (c) => (
-                      <button
-                        key={c}
-                        onClick={() => setQuery(c)}
-                        className="rounded-xs border border-line bg-cream-50 px-3 py-1 text-[12px] text-blue-900 transition-colors hover:border-gold-500"
-                      >
-                        {c}
-                      </button>
-                    )
-                  )}
+                  {quickCities.map((c) => (
+                    <button
+                      key={c}
+                      onClick={() => setQuery(titleCase(c))}
+                      className="rounded-xs border border-line bg-cream-50 px-3 py-1 text-[12px] text-blue-900 transition-colors hover:border-gold-500"
+                    >
+                      {titleCase(c)}
+                    </button>
+                  ))}
+                </div>
+                <div className="mt-3 text-[12px] text-ink-600">
+                  {filtered.length} parlour
+                  {filtered.length === 1 ? "" : "s"} found
                 </div>
               </div>
 
-              <div className="divide-y divide-line overflow-hidden rounded-lg border border-line bg-white shadow-soft">
+              <div className="max-h-[640px] divide-y divide-line overflow-y-auto rounded-lg border border-line bg-white shadow-soft">
                 {filtered.length === 0 && (
                   <div className="p-8 text-center text-[14px] text-ink-600">
-                    No parlour here yet — we're expanding. Tell us where you'd
-                    like one.
+                    No parlour here yet — we&apos;re expanding. Tell us where
+                    you&apos;d like one.
                   </div>
                 )}
                 {filtered.map((p) => {
-                  const isActive = activeId === p.name;
+                  const isActive = active.id === p.id;
+                  const contactForTel = p.contact.split(/[/,]/)[0].trim();
                   return (
                     <button
-                      key={p.name}
-                      onClick={() => setActiveId(p.name)}
+                      key={p.id}
+                      onClick={() => setActiveId(p.id)}
                       className={`relative block w-full p-5 text-left transition-colors ${
                         isActive ? "bg-cream-100" : "hover:bg-cream-50"
                       }`}
@@ -85,28 +129,45 @@ export default function FindParlourPage() {
                         <span className="absolute left-0 top-0 h-full w-[3px] bg-gold-500" />
                       )}
                       <div className="flex items-start justify-between gap-3">
-                        <div>
-                          <h3 className="font-display text-[18px] font-medium text-blue-900">
-                            {p.name}
+                        <div className="min-w-0">
+                          <h3 className="truncate font-display text-[18px] font-medium text-blue-900">
+                            {titleCase(p.name)}
                           </h3>
-                          <p className="mt-1 text-[13.5px] leading-relaxed text-ink-600">
-                            {p.address} · {p.pincode}
+                          <div className="mt-0.5 flex flex-wrap gap-x-2 text-[12px] text-ink-400">
+                            <span>{titleCase(p.city)}</span>
+                            <span>·</span>
+                            <span>{titleCase(p.state)}</span>
+                            {p.pincode && (
+                              <>
+                                <span>·</span>
+                                <span>{p.pincode}</span>
+                              </>
+                            )}
+                          </div>
+                          <p className="mt-2 text-[13.5px] leading-relaxed text-ink-600">
+                            {p.address}
                           </p>
                         </div>
-                        <div className="whitespace-nowrap text-[13px] font-semibold text-gold-500">
-                          {p.km} km
-                        </div>
                       </div>
-                      <div className="mt-3 flex gap-4 text-[12.5px]">
+                      <div className="mt-3 flex flex-wrap gap-4 text-[12.5px]">
                         <a
-                          href={`tel:${p.phone.replace(/\s/g, "")}`}
+                          href={`tel:${contactForTel.replace(/\s/g, "")}`}
+                          onClick={(e) => e.stopPropagation()}
                           className="inline-flex items-center gap-1.5 text-blue-900 hover:text-gold-500"
                         >
-                          <Phone size={13} /> {p.phone}
+                          <Phone size={13} /> {p.contact}
                         </a>
-                        <span className="inline-flex items-center gap-1.5 text-blue-900 hover:text-gold-500">
+                        <a
+                          href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                            `${p.name} ${p.address}`
+                          )}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-1.5 text-blue-900 hover:text-gold-500"
+                        >
                           <Navigation size={13} /> Directions
-                        </span>
+                        </a>
                       </div>
                     </button>
                   );
@@ -115,8 +176,7 @@ export default function FindParlourPage() {
             </div>
 
             {/* Right: map */}
-            <div className="relative h-[640px] overflow-hidden rounded-lg border border-line bg-cream-100 shadow-soft">
-              {/* stylised map */}
+            <div className="relative h-[640px] overflow-hidden rounded-lg border border-line bg-cream-100 shadow-soft lg:sticky lg:top-24">
               <svg
                 viewBox="0 0 600 640"
                 className="absolute inset-0 h-full w-full"
@@ -139,12 +199,10 @@ export default function FindParlourPage() {
                 </defs>
                 <rect width="600" height="640" fill="#F8F5ED" />
                 <rect width="600" height="640" fill="url(#grid)" />
-                {/* "water" — Malaprabha */}
                 <path
                   d="M0,420 Q150,380 300,410 T600,400 L600,440 Q450,460 300,450 T0,460 Z"
                   fill="#E7E1D2"
                 />
-                {/* roads */}
                 <path
                   d="M60,80 Q200,200 320,300 T560,520"
                   stroke="#8A8880"
@@ -160,23 +218,21 @@ export default function FindParlourPage() {
                   strokeDasharray="3 4"
                 />
 
-                {/* parlour pins */}
-                {[
-                  { x: 200, y: 240, name: parlours[0].name },
-                  { x: 250, y: 210, name: parlours[1].name },
-                  { x: 330, y: 330, name: parlours[2].name },
-                  { x: 460, y: 420, name: parlours[3].name },
-                  { x: 410, y: 380, name: parlours[4].name },
-                ].map((pin) => {
-                  const active = activeId === pin.name;
+                {/* a ring of pins scattered on the stylised map */}
+                {filtered.slice(0, 12).map((p, i) => {
+                  const angle = (i / 12) * Math.PI * 2;
+                  const radius = 180 + (i % 3) * 40;
+                  const x = 300 + Math.cos(angle) * radius * 0.8;
+                  const y = 320 + Math.sin(angle) * radius * 0.6;
+                  const isActive = active.id === p.id;
                   return (
                     <g
-                      key={pin.name}
-                      transform={`translate(${pin.x},${pin.y})`}
+                      key={p.id}
+                      transform={`translate(${x},${y})`}
                       className="cursor-pointer"
-                      onClick={() => setActiveId(pin.name)}
+                      onClick={() => setActiveId(p.id)}
                     >
-                      {active && (
+                      {isActive && (
                         <circle
                           r="22"
                           fill="#C9A227"
@@ -195,7 +251,6 @@ export default function FindParlourPage() {
                   );
                 })}
 
-                {/* label */}
                 <text
                   x="30"
                   y="40"
@@ -204,20 +259,21 @@ export default function FindParlourPage() {
                   fontWeight="600"
                   letterSpacing="1.5"
                 >
-                  NORTH KARNATAKA
+                  KARNATAKA · MAHARASHTRA
                 </text>
               </svg>
 
-              {/* Overlay card */}
-              <div className="absolute bottom-5 left-5 right-5 flex items-center gap-3 rounded-lg border border-line bg-white/95 px-4 py-3 shadow-soft backdrop-blur md:right-auto md:max-w-[360px]">
-                <MapPin size={18} className="flex-none text-gold-500" />
+              <div className="absolute bottom-5 left-5 right-5 flex items-start gap-3 rounded-lg border border-line bg-white/95 px-4 py-3 shadow-soft backdrop-blur md:right-auto md:max-w-[380px]">
+                <MapPin size={18} className="mt-0.5 flex-none text-gold-500" />
                 <div className="text-[13px]">
                   <div className="font-medium text-blue-900">
-                    {parlours.find((p) => p.name === activeId)?.name}
+                    {titleCase(active.name)}
                   </div>
-                  <div className="text-ink-600">
-                    {parlours.find((p) => p.name === activeId)?.address}
+                  <div className="mt-0.5 text-[11.5px] text-ink-400">
+                    {titleCase(active.city)} · {titleCase(active.state)}
+                    {active.pincode ? ` · ${active.pincode}` : ""}
                   </div>
+                  <div className="mt-1 text-ink-600">{active.address}</div>
                 </div>
               </div>
             </div>

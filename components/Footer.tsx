@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
 
 export default function Footer() {
@@ -8,11 +9,13 @@ export default function Footer() {
         {/* Brand column */}
         <div>
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gold-500/40">
-              <span className="font-display text-lg italic text-gold-400">
-                A
-              </span>
-            </div>
+            <Image
+              src="/images/adityaalogo.png"
+              alt="Adityaa Milk"
+              width={48}
+              height={48}
+              className="h-10 w-10 object-contain"
+            />
             <span className="font-display text-xl text-white">Adityaa Milk</span>
           </div>
           <p className="mt-5 max-w-[260px] text-[14px] leading-relaxed">
