@@ -3,7 +3,6 @@ import { Inter, Fraunces } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
-import PageTransition from "@/components/PageTransition";
 import BackToTop from "@/components/BackToTop";
 import "./globals.css";
 
@@ -134,7 +133,7 @@ export default function RootLayout({
         <SmoothScroll>
           <Header />
           <main id="content" className="min-h-screen">
-            <PageTransition>{children}</PageTransition>
+            {children}
           </main>
           <Footer />
           <BackToTop />
