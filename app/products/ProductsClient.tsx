@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import SectionEyebrow from "@/components/SectionEyebrow";
+import SunMark from "@/components/SunMark";
 import { products } from "@/lib/data";
 
 const categories = [
@@ -22,8 +23,14 @@ export default function ProductsPage() {
 
   return (
     <>
-      <section className="bg-cream-50 py-20">
-        <div className="container-x">
+      <section className="relative overflow-hidden bg-cream-50 py-20">
+        <SunMark
+          variant="corner"
+          size={220}
+          rayColor="#D4AF37"
+          className="pointer-events-none absolute right-0 top-0 opacity-[0.14] -scale-x-100"
+        />
+        <div className="container-x relative">
           <SectionEyebrow>Our Products</SectionEyebrow>
           <div className="mt-6 flex flex-col justify-between gap-10 md:flex-row md:items-end">
             <h1 className="max-w-[640px] font-display text-[48px] font-medium leading-tight text-blue-900">
@@ -69,8 +76,14 @@ export default function ProductsPage() {
       </section>
 
       {/* Mid-grid pull quote */}
-      <section className="bg-cream-100 py-20">
-        <div className="container-x">
+      <section className="relative overflow-hidden bg-cream-100 py-20">
+        <SunMark
+          variant="rays"
+          size={140}
+          rayColor="#27398F"
+          className="pointer-events-none absolute left-1/2 top-8 -translate-x-1/2 opacity-[0.07]"
+        />
+        <div className="container-x relative">
           <div className="mx-auto max-w-[780px] text-center">
             <SectionEyebrow>On Sourcing</SectionEyebrow>
             <blockquote className="mt-6 font-display text-[28px] italic leading-snug text-blue-900 md:text-[34px]">

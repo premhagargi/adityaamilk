@@ -1,11 +1,18 @@
 import Link from "next/link";
 import SectionEyebrow from "@/components/SectionEyebrow";
+import SunMark from "@/components/SunMark";
 import { ArrowRight } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <section className="bg-cream-50 py-32">
-      <div className="container-x grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
+    <section className="relative overflow-hidden bg-cream-50 py-32">
+      <SunMark
+        variant="corner"
+        size={260}
+        rayColor="#D4AF37"
+        className="pointer-events-none absolute left-0 top-10 opacity-[0.18]"
+      />
+      <div className="container-x relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
         <div>
           <SectionEyebrow>404 · Page not found</SectionEyebrow>
           <h1 className="mt-6 font-display text-[56px] font-medium leading-[1.05] tracking-tight text-blue-900 md:text-[80px]">
@@ -49,8 +56,15 @@ export default function NotFound() {
           </div>
         </div>
 
-        <div className="hidden lg:block">
-          <div className="font-display text-[200px] font-medium italic leading-none text-blue-900/10">
+        <div className="relative hidden items-center justify-center lg:flex">
+          <SunMark
+            variant="seal"
+            size={320}
+            rayColor="#D4AF37"
+            bgColor="#27398F"
+            className="drop-shadow-xl"
+          />
+          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 font-display text-[120px] font-medium italic leading-none text-blue-900/10">
             404
           </div>
         </div>

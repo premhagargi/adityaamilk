@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import SectionEyebrow from "@/components/SectionEyebrow";
+import SunMark from "@/components/SunMark";
 import { parlours, type Parlour } from "@/lib/data";
 import { MapPin, Search, Navigation, Phone } from "lucide-react";
 
@@ -53,8 +54,14 @@ export default function FindParlourPage() {
 
   return (
     <>
-      <section className="bg-cream-50 py-16">
-        <div className="container-x">
+      <section className="relative overflow-hidden bg-cream-50 py-16">
+        <SunMark
+          variant="corner"
+          size={220}
+          rayColor="#D4AF37"
+          className="pointer-events-none absolute right-0 top-0 opacity-[0.14] -scale-x-100"
+        />
+        <div className="container-x relative">
           <SectionEyebrow>Find A Parlour</SectionEyebrow>
           <h1 className="mt-6 max-w-[700px] font-display text-[48px] font-medium leading-tight text-blue-900 md:text-[56px]">
             Find Adityaa near you.

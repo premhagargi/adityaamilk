@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Placeholder from "@/components/Placeholder";
 import SectionEyebrow from "@/components/SectionEyebrow";
+import SunMark from "@/components/SunMark";
 import { qcTests } from "@/lib/data";
 import {
   Scale,
@@ -82,8 +83,14 @@ export default function AboutPage() {
   return (
     <>
       {/* HERO */}
-      <section className="bg-cream-50 py-20 md:py-24">
-        <div className="container-x grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.15fr_1fr]">
+      <section className="relative overflow-hidden bg-cream-50 py-20 md:py-24">
+        <SunMark
+          variant="corner"
+          size={220}
+          rayColor="#D4AF37"
+          className="pointer-events-none absolute right-0 top-0 opacity-[0.14] -scale-x-100"
+        />
+        <div className="container-x relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.15fr_1fr]">
           <div>
             <SectionEyebrow>About Adityaa Milk</SectionEyebrow>
             <h1 className="mt-6 font-display text-[44px] font-medium leading-[1.1] tracking-tight text-blue-900 md:text-[56px]">
@@ -222,8 +229,14 @@ export default function AboutPage() {
       </section>
 
       {/* FARMER -> CONSUMER */}
-      <section className="bg-blue-900 py-28 text-cream-50">
-        <div className="container-x">
+      <section className="relative overflow-hidden bg-blue-900 py-28 text-cream-50">
+        <SunMark
+          variant="corner"
+          size={220}
+          rayColor="#D4AF37"
+          className="pointer-events-none absolute right-0 top-0 opacity-[0.12] -scale-x-100"
+        />
+        <div className="container-x relative">
           <div className="max-w-prose">
             <SectionEyebrow tone="dark">Farmer to Consumer</SectionEyebrow>
             <h2 className="mt-5 font-display text-[36px] font-medium leading-tight">

@@ -215,30 +215,67 @@ export const products: Product[] = [
   },
 ];
 
-export const achievements = [
+export type Achievement = {
+  year: string;
+  eyebrow: string;
+  title: string;
+  body: string;
+  highlights?: string[];
+  images: { src: string; alt: string }[];
+};
+
+export const achievements: Achievement[] = [
   {
     year: "2023",
+    eyebrow: "Global Partner Visit",
     title: "Hindustan Unilever (Wall's) Global Team visit",
     body:
-      "The global leadership of Wall's toured our Neginhal facility to review our frozen-dessert manufacturing discipline — a quiet, reassuring nod from a demanding partner.",
+      "Hindustan Unilever (Wall's) Global Team visit to Vijaykant Dairy & Food Products Ltd — a tour of the Neginhal plant, the frozen-dessert line and the in-house lab, conducted by the global leadership of one of the most demanding partners in the category.",
+    images: [
+      { src: "/images/aditya1.jpg", alt: "Wall's global team at Vijaykant Dairy" },
+      { src: "/images/aditya2.jpg", alt: "Plant walk-through with Wall's leadership" },
+    ],
   },
   {
     year: "2021",
+    eyebrow: "Top 100 · All India",
     title: "India SME 100 Awards",
     body:
-      "Recognised among India's top 100 SMEs for operational excellence and sustained growth in the dairy sector.",
+      "Vijaykant Dairy and Food Products Ltd has been awarded the \"INDIA SME 100 Awards\" for scoring in the Top 100 in the overall evaluation of Financial & Non-Financial Parameters amongst 33,102 nominations.",
+    highlights: [
+      "Top 100 of 33,102 nominations",
+      "Financial & non-financial parameters",
+    ],
+    images: [
+      { src: "/images/india-sme-one.jpg", alt: "India SME 100 Award recognition" },
+      { src: "/images/india-sme-two.jpg", alt: "India SME 100 Award ceremony" },
+    ],
   },
   {
     year: "2018",
-    title: "India Small Giant Award",
+    eyebrow: "Presented by Hon. MSME Minister",
+    title: "India Small Giant Award 2018",
     body:
-      "Honoured for building a mid-scale manufacturer that competes on quality, not size — the Small Giant distinction.",
+      "Vijaykant Dairy and Food Products Ltd has been awarded the SMALL GIANT AWARD 2018, presented by Hon. MSME Minister Shri Giriraj Singh — a recognition of mid-scale manufacturers that compete on quality rather than size.",
+    highlights: ["Presented by Hon. Giriraj Singh, MSME Minister"],
+    images: [
+      { src: "/images/small-giant-one.jpg", alt: "Small Giant Award 2018 ceremony" },
+      { src: "/images/small-giant-two.jpg", alt: "Small Giant Award 2018 recognition" },
+    ],
   },
   {
     year: "2017",
-    title: "Gold · Great Indian Ice Cream Contest",
+    eyebrow: "Dupont · Industry Jury",
+    title: "The Great Indian Ice Cream & Frozen Dessert Contest",
     body:
-      "Gold for Best Chocolate Ice Cream and Best-in-class for Vanilla Frozen Dessert — judged by industry peers.",
+      "Dupont — The Great Indian Ice Cream and Frozen Dessert Contest. Gold award for Best Chocolate Ice Cream, and Best-in-Class award for Vanilla Frozen Dessert — judged by industry peers on taste, texture and consistency.",
+    highlights: [
+      "Gold · Best Chocolate Ice Cream",
+      "Best-in-Class · Vanilla Frozen Dessert",
+    ],
+    images: [
+      { src: "/images/frozen-dessert.jpg", alt: "Great Indian Ice Cream Contest award" },
+    ],
   },
 ];
 

@@ -1,11 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
+import SunMark from "./SunMark";
 
 export default function Footer() {
   return (
-    <footer className="bg-blue-900 text-white/80">
-      <div className="container-x grid grid-cols-1 gap-12 py-20 md:grid-cols-2 lg:grid-cols-4">
+    <footer className="relative overflow-hidden bg-blue-900 text-white/80">
+      {/* Brand motif — rising sun, bleeding off the right edge */}
+      <SunMark
+        variant="corner"
+        size={260}
+        rayColor="#D4AF37"
+        className="pointer-events-none absolute right-0 top-0 opacity-[0.10] -scale-x-100"
+      />
+      <div className="container-x relative grid grid-cols-1 gap-12 py-20 md:grid-cols-2 lg:grid-cols-4">
         {/* Brand column */}
         <div>
           <div className="flex items-center gap-3">
