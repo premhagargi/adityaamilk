@@ -50,7 +50,9 @@ export default function Header() {
   return (
     <header
       className={`sticky top-0 z-50 w-full bg-cream-50/90 backdrop-blur-md transition-all duration-200 ease-premium ${
-        scrolled ? "h-[92px] border-b border-line shadow-soft" : "h-[112px]"
+        scrolled
+          ? "h-[68px] border-b border-line shadow-soft md:h-[92px]"
+          : "h-[76px] md:h-[112px]"
       }`}
     >
       <div className="container-x flex h-full items-center gap-6">
@@ -65,7 +67,7 @@ export default function Header() {
             width={65}
             height={65}
             priority
-            className="h-20 w-auto object-contain md:h-[84px]"
+            className="h-12 w-auto object-contain md:h-[84px]"
           />
         </Link>
 

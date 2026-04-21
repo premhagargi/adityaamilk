@@ -156,7 +156,7 @@ export default function HomePage() {
             </p>
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid grid-cols-2 gap-4 md:gap-6 lg:grid-cols-4">
             {featured.map((p, i) => (
               <Reveal key={p.slug} delay={i * 0.08} className="h-full">
                 <ProductCard product={p} />
