@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Placeholder from "@/components/Placeholder";
 import SectionEyebrow from "@/components/SectionEyebrow";
-import SunMark from "@/components/SunMark";
 import { qcTests } from "@/lib/data";
 import {
   Scale,
@@ -84,12 +84,6 @@ export default function AboutPage() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden bg-cream-50 py-20 md:py-24">
-        <SunMark
-          variant="corner"
-          size={220}
-          rayColor="#D4AF37"
-          className="pointer-events-none absolute right-0 top-0 opacity-[0.14] -scale-x-100"
-        />
         <div className="container-x relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.15fr_1fr]">
           <div>
             <SectionEyebrow>About Adityaa Milk</SectionEyebrow>
@@ -230,12 +224,16 @@ export default function AboutPage() {
 
       {/* FARMER -> CONSUMER */}
       <section className="relative overflow-hidden bg-blue-900 py-28 text-cream-50">
-        <SunMark
-          variant="corner"
-          size={220}
-          rayColor="#D4AF37"
-          className="pointer-events-none absolute right-0 top-0 opacity-[0.12] -scale-x-100"
-        />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 overflow-hidden md:h-48">
+          <Image
+            src="/images/sunmark.png"
+            alt=""
+            width={1600}
+            height={300}
+            aria-hidden
+            className="h-full w-full object-cover"
+          />
+        </div>
         <div className="container-x relative">
           <div className="max-w-prose">
             <SectionEyebrow tone="dark">Farmer to Consumer</SectionEyebrow>
@@ -285,9 +283,9 @@ export default function AboutPage() {
         <div className="container-x grid grid-cols-1 gap-6 md:grid-cols-2">
           {[
             {
-              title: "Corporate Office",
+              title: "Registered Office",
               body:
-                "LIG 159, Mahantesh Nagar, Belagavi – 590016, Karnataka",
+                "Vijaynand Road Lines, CTS. No. 4883, Fort Road, Belagavi – 590001, Karnataka",
             },
             {
               title: "Factory",

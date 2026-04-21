@@ -1,9 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import Placeholder from "@/components/Placeholder";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import ProductCard from "@/components/ProductCard";
 import Reveal from "@/components/Reveal";
-import SunMark from "@/components/SunMark";
 import { products, achievements } from "@/lib/data";
 import {
   ShieldCheck,
@@ -30,21 +30,15 @@ const qualityChain = [
 ];
 
 export default function HomePage() {
-  const featured = products.filter((p) =>
-    ["full-cream-milk", "curd", "paneer", "ghee"].includes(p.slug)
-  );
+  const featuredSlugs = ["toned-milk", "curd", "paneer", "ghee"] as const;
+  const featured = featuredSlugs
+    .map((s) => products.find((p) => p.slug === s))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p));
 
   return (
     <>
       {/* HERO */}
       <section className="relative overflow-hidden bg-cream-50">
-        {/* Brand mark — rising sun, top-right corner */}
-        <SunMark
-          variant="corner"
-          size={220}
-          rayColor="#D4AF37"
-          className="pointer-events-none absolute right-0 top-0 opacity-[0.14] -scale-x-100"
-        />
         <div className="container-x grid min-h-[88vh] grid-cols-1 items-center gap-12 py-24 lg:grid-cols-[1.15fr_1fr]">
           <div>
             <SectionEyebrow>Since 1994 · Belagavi</SectionEyebrow>
@@ -223,19 +217,17 @@ export default function HomePage() {
 
       {/* ACHIEVEMENTS TEASER */}
       <section className="relative overflow-hidden bg-blue-900 py-28 text-cream-50">
-        {/* Rising-sun brand motif, bleeds off the bottom edge */}
-        <SunMark
-          variant="rays"
-          size={520}
-          rayColor="#D4AF37"
-          className="pointer-events-none absolute -bottom-24 left-1/2 -translate-x-1/2 opacity-[0.12]"
-        />
-        <SunMark
-          variant="corner"
-          size={180}
-          rayColor="#D4AF37"
-          className="pointer-events-none absolute left-0 top-0 opacity-[0.10]"
-        />
+        {/* Brand banner — rising sun motif, bleeds to the bottom edge */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 overflow-hidden md:h-48">
+          <Image
+            src="/images/sunmark.png"
+            alt=""
+            width={1600}
+            height={300}
+            aria-hidden
+            className="h-full w-full object-cover"
+          />
+        </div>
         <div className="container-x relative">
           <div className="flex flex-col items-start justify-between gap-5 md:flex-row md:items-end">
             <div>
@@ -339,12 +331,6 @@ export default function HomePage() {
 
       {/* ENQUIRY CTA */}
       <section className="relative overflow-hidden bg-cream-200 py-24">
-        <SunMark
-          variant="rays"
-          size={160}
-          rayColor="#27398F"
-          className="pointer-events-none absolute left-1/2 top-10 -translate-x-1/2 opacity-[0.08]"
-        />
         <div className="container-x relative text-center">
           <SectionEyebrow>Work with Us</SectionEyebrow>
           <h2 className="mx-auto mt-5 max-w-[720px] font-display text-[40px] font-medium leading-tight text-blue-900">

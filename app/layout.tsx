@@ -86,12 +86,12 @@ const organizationSchema = {
   address: [
     {
       "@type": "PostalAddress",
-      streetAddress: "LIG 159, Mahantesh Nagar",
+      streetAddress: "Vijaynand Road Lines, CTS. No. 4883, Fort Road",
       addressLocality: "Belagavi",
-      postalCode: "590016",
+      postalCode: "590001",
       addressRegion: "Karnataka",
       addressCountry: "IN",
-      name: "Corporate Office",
+      name: "Registered Office",
     },
     {
       "@type": "PostalAddress",

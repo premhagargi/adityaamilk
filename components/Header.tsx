@@ -13,6 +13,7 @@ const nav = [
   { href: "/products", label: "Products" },
   { href: "/achievements", label: "Achievements" },
   { href: "/find-parlour", label: "Find Parlour" },
+  { href: "/investor-desk", label: "Investors" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -50,27 +51,27 @@ export default function Header() {
   return (
     <header
       className={`sticky top-0 z-50 w-full bg-cream-50/90 backdrop-blur-md transition-all duration-200 ease-premium ${
-        scrolled ? "h-[72px] border-b border-line shadow-soft" : "h-[88px]"
+        scrolled ? "h-[92px] border-b border-line shadow-soft" : "h-[112px]"
       }`}
     >
       <div className="container-x flex h-full items-center gap-6">
         <Link
           href="/"
-          className="flex shrink-0 items-center gap-3"
+          className="flex shrink-0 items-center"
           aria-label="Adityaa Milk — Home"
         >
           <Image
             src="/images/adityaalogo.png"
             alt="Adityaa Milk"
-            width={48}
-            height={48}
+            width={96}
+            height={96}
             priority
-            className="h-10 w-10 object-contain"
+            className="h-20 w-auto object-contain md:h-[84px]"
           />
         </Link>
 
         <nav
-          className="ml-auto hidden items-center gap-6 xl:gap-8 lg:flex"
+          className="hidden items-center gap-6 xl:gap-8 lg:flex"
           aria-label="Primary"
         >
           {nav.map((n) => {
@@ -95,7 +96,7 @@ export default function Header() {
           })}
         </nav>
 
-        <div className="ml-auto flex shrink-0 items-center gap-3 lg:ml-0 lg:gap-4">
+        <div className="ml-auto flex shrink-0 items-center gap-3 lg:gap-4">
           <a
             href="tel:+919900255556"
             className="hidden items-center gap-2 whitespace-nowrap text-[13.5px] leading-none text-blue-900 xl:flex"

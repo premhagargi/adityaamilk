@@ -2,7 +2,6 @@
 
 import { useMemo, useState } from "react";
 import SectionEyebrow from "@/components/SectionEyebrow";
-import SunMark from "@/components/SunMark";
 import { parlours, type Parlour } from "@/lib/data";
 import { MapPin, Search, Navigation, Phone } from "lucide-react";
 
@@ -55,12 +54,6 @@ export default function FindParlourPage() {
   return (
     <>
       <section className="relative overflow-hidden bg-cream-50 py-16">
-        <SunMark
-          variant="corner"
-          size={220}
-          rayColor="#D4AF37"
-          className="pointer-events-none absolute right-0 top-0 opacity-[0.14] -scale-x-100"
-        />
         <div className="container-x relative">
           <SectionEyebrow>Find A Parlour</SectionEyebrow>
           <h1 className="mt-6 max-w-[700px] font-display text-[48px] font-medium leading-tight text-blue-900 md:text-[56px]">
@@ -182,95 +175,21 @@ export default function FindParlourPage() {
               </div>
             </div>
 
-            {/* Right: map */}
+            {/* Right: live Google Maps embed for the active parlour */}
             <div className="relative h-[640px] overflow-hidden rounded-lg border border-line bg-cream-100 shadow-soft lg:sticky lg:top-24">
-              <svg
-                viewBox="0 0 600 640"
+              <iframe
+                key={active.id}
+                title={`Map · ${titleCase(active.name)}, ${titleCase(active.city)}`}
+                src={`https://www.google.com/maps?q=${encodeURIComponent(
+                  `${active.name}, ${active.address}`
+                )}&output=embed`}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
                 className="absolute inset-0 h-full w-full"
-                preserveAspectRatio="xMidYMid slice"
-              >
-                <defs>
-                  <pattern
-                    id="grid"
-                    width="40"
-                    height="40"
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <path
-                      d="M 40 0 L 0 0 0 40"
-                      fill="none"
-                      stroke="#E7E1D2"
-                      strokeWidth="0.5"
-                    />
-                  </pattern>
-                </defs>
-                <rect width="600" height="640" fill="#F8F5ED" />
-                <rect width="600" height="640" fill="url(#grid)" />
-                <path
-                  d="M0,420 Q150,380 300,410 T600,400 L600,440 Q450,460 300,450 T0,460 Z"
-                  fill="#E7E1D2"
-                />
-                <path
-                  d="M60,80 Q200,200 320,300 T560,520"
-                  stroke="#8A8880"
-                  strokeWidth="1.2"
-                  fill="none"
-                  strokeDasharray="3 4"
-                />
-                <path
-                  d="M40,520 Q200,440 380,460 T580,320"
-                  stroke="#8A8880"
-                  strokeWidth="1.2"
-                  fill="none"
-                  strokeDasharray="3 4"
-                />
+                allowFullScreen
+              />
 
-                {/* a ring of pins scattered on the stylised map */}
-                {filtered.slice(0, 12).map((p, i) => {
-                  const angle = (i / 12) * Math.PI * 2;
-                  const radius = 180 + (i % 3) * 40;
-                  const x = 300 + Math.cos(angle) * radius * 0.8;
-                  const y = 320 + Math.sin(angle) * radius * 0.6;
-                  const isActive = active.id === p.id;
-                  return (
-                    <g
-                      key={p.id}
-                      transform={`translate(${x},${y})`}
-                      className="cursor-pointer"
-                      onClick={() => setActiveId(p.id)}
-                    >
-                      {isActive && (
-                        <circle
-                          r="22"
-                          fill="#C9A227"
-                          fillOpacity="0.15"
-                          className="animate-pulse"
-                        />
-                      )}
-                      <path
-                        d="M0,-18 C8,-18 14,-12 14,-4 C14,6 0,18 0,18 C0,18 -14,6 -14,-4 C-14,-12 -8,-18 0,-18 Z"
-                        fill="#C9A227"
-                        stroke="#27398F"
-                        strokeWidth="1"
-                      />
-                      <circle r="3.5" cy="-4" fill="#27398F" />
-                    </g>
-                  );
-                })}
-
-                <text
-                  x="30"
-                  y="40"
-                  fontSize="11"
-                  fill="#27398F"
-                  fontWeight="600"
-                  letterSpacing="1.5"
-                >
-                  KARNATAKA · MAHARASHTRA
-                </text>
-              </svg>
-
-              <div className="absolute bottom-5 left-5 right-5 flex items-start gap-3 rounded-lg border border-line bg-white/95 px-4 py-3 shadow-soft backdrop-blur md:right-auto md:max-w-[380px]">
+              <div className="absolute left-5 right-5 top-5 flex items-start gap-3 rounded-lg border border-line bg-white/95 px-4 py-3 shadow-soft backdrop-blur md:right-auto md:max-w-[380px]">
                 <MapPin size={18} className="mt-0.5 flex-none text-gold-500" />
                 <div className="text-[13px]">
                   <div className="font-medium text-blue-900">
@@ -281,6 +200,16 @@ export default function FindParlourPage() {
                     {active.pincode ? ` · ${active.pincode}` : ""}
                   </div>
                   <div className="mt-1 text-ink-600">{active.address}</div>
+                  <a
+                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                      `${active.name}, ${active.address}`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-2 inline-flex items-center gap-1.5 text-[12.5px] font-medium text-blue-900 hover:text-gold-500"
+                  >
+                    <Navigation size={13} /> Open in Google Maps
+                  </a>
                 </div>
               </div>
             </div>

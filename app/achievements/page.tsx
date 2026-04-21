@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import Reveal from "@/components/Reveal";
-import SunMark from "@/components/SunMark";
 import { achievements } from "@/lib/data";
 import { Award, Medal, Trophy, Sparkles } from "lucide-react";
 
@@ -26,12 +25,6 @@ export default function AchievementsPage() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden bg-cream-50 pb-10 pt-20 md:pt-24">
-        <SunMark
-          variant="corner"
-          size={220}
-          rayColor="#D4AF37"
-          className="pointer-events-none absolute right-0 top-0 opacity-[0.14] -scale-x-100"
-        />
         <div className="container-x relative">
           <SectionEyebrow>Milestones</SectionEyebrow>
           <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-[1.3fr_1fr]">
@@ -76,7 +69,7 @@ export default function AchievementsPage() {
             <EntryMarker index="01" year={hul.year} eyebrow={hul.eyebrow} />
           </Reveal>
           <div className="mt-10 grid grid-cols-12 gap-6 md:gap-10">
-            <div className="col-span-12 md:col-span-5 md:pt-8">
+            <div className="col-span-12 md:col-span-4 md:pt-8">
               <Reveal>
                 <h2 className="font-display text-[30px] font-medium leading-tight text-blue-900 md:text-[38px]">
                   Hindustan Unilever <span className="italic text-gold-500">(Wall's)</span>
@@ -94,7 +87,7 @@ export default function AchievementsPage() {
             </div>
 
             {/* collage */}
-            <div className="col-span-12 md:col-span-7">
+            <div className="col-span-12 md:col-span-8">
               <Reveal delay={0.1}>
                 <div className="grid grid-cols-5 gap-4 md:gap-5">
                   <figure className="col-span-3">
@@ -103,7 +96,7 @@ export default function AchievementsPage() {
                         src={hul.images[0].src}
                         alt={hul.images[0].alt}
                         fill
-                        sizes="(min-width: 768px) 35vw, 60vw"
+                        sizes="(min-width: 768px) 42vw, 60vw"
                         className="object-cover"
                       />
                     </div>
@@ -114,7 +107,7 @@ export default function AchievementsPage() {
                         src={hul.images[1].src}
                         alt={hul.images[1].alt}
                         fill
-                        sizes="(min-width: 768px) 25vw, 40vw"
+                        sizes="(min-width: 768px) 28vw, 40vw"
                         className="object-cover"
                       />
                     </div>
@@ -134,7 +127,7 @@ export default function AchievementsPage() {
         <div className="container-x">
           <div className="grid grid-cols-12 gap-6 md:gap-10">
             {/* paired images */}
-            <div className="col-span-12 md:col-span-7 md:order-2">
+            <div className="col-span-12 md:col-span-8 md:order-2">
               <Reveal delay={0.1}>
                 <div className="grid grid-cols-2 gap-4 md:gap-5">
                   <figure>
@@ -143,7 +136,7 @@ export default function AchievementsPage() {
                         src={sme.images[0].src}
                         alt={sme.images[0].alt}
                         fill
-                        sizes="(min-width: 768px) 30vw, 50vw"
+                        sizes="(min-width: 768px) 34vw, 50vw"
                         className="object-cover"
                       />
                     </div>
@@ -154,7 +147,7 @@ export default function AchievementsPage() {
                         src={sme.images[1].src}
                         alt={sme.images[1].alt}
                         fill
-                        sizes="(min-width: 768px) 30vw, 50vw"
+                        sizes="(min-width: 768px) 34vw, 50vw"
                         className="object-cover"
                       />
                     </div>
@@ -163,7 +156,7 @@ export default function AchievementsPage() {
               </Reveal>
             </div>
 
-            <div className="col-span-12 md:col-span-5 md:order-1">
+            <div className="col-span-12 md:col-span-4 md:order-1">
               <Reveal>
                 <EntryMarker index="02" year={sme.year} eyebrow={sme.eyebrow} />
                 <h2 className="mt-8 font-display text-[30px] font-medium leading-tight text-blue-900 md:text-[38px]">
@@ -196,18 +189,16 @@ export default function AchievementsPage() {
 
       {/* 03 · INDIA SMALL GIANT 2018 — wide strip on deep blue */}
       <section className="relative overflow-hidden bg-blue-900 py-24 text-cream-50 md:py-28">
-        <SunMark
-          variant="rays"
-          size={460}
-          rayColor="#D4AF37"
-          className="pointer-events-none absolute -bottom-20 right-0 opacity-[0.10]"
-        />
-        <SunMark
-          variant="corner"
-          size={200}
-          rayColor="#D4AF37"
-          className="pointer-events-none absolute left-0 top-0 opacity-[0.10]"
-        />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 overflow-hidden md:h-48">
+          <Image
+            src="/images/sunmark.png"
+            alt=""
+            width={1600}
+            height={300}
+            aria-hidden
+            className="h-full w-full object-cover"
+          />
+        </div>
         <div className="container-x relative">
           <Reveal>
             <div className="max-w-[640px]">

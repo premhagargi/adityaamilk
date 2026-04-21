@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import ProductCard from "@/components/ProductCard";
 import SectionEyebrow from "@/components/SectionEyebrow";
-import SunMark from "@/components/SunMark";
 import { products } from "@/lib/data";
 
 const categories = [
@@ -13,7 +12,7 @@ const categories = [
   "Flavoured Milk",
   "Curd & Cultured",
   "Sweets",
-  "Fats",
+  "Ghee",
 ] as const;
 
 export default function ProductsPage() {
@@ -24,12 +23,6 @@ export default function ProductsPage() {
   return (
     <>
       <section className="relative overflow-hidden bg-cream-50 py-20">
-        <SunMark
-          variant="corner"
-          size={220}
-          rayColor="#D4AF37"
-          className="pointer-events-none absolute right-0 top-0 opacity-[0.14] -scale-x-100"
-        />
         <div className="container-x relative">
           <SectionEyebrow>Our Products</SectionEyebrow>
           <div className="mt-6 flex flex-col justify-between gap-10 md:flex-row md:items-end">
@@ -77,12 +70,6 @@ export default function ProductsPage() {
 
       {/* Mid-grid pull quote */}
       <section className="relative overflow-hidden bg-cream-100 py-20">
-        <SunMark
-          variant="rays"
-          size={140}
-          rayColor="#27398F"
-          className="pointer-events-none absolute left-1/2 top-8 -translate-x-1/2 opacity-[0.07]"
-        />
         <div className="container-x relative">
           <div className="mx-auto max-w-[780px] text-center">
             <SectionEyebrow>On Sourcing</SectionEyebrow>

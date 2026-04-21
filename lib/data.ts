@@ -3,7 +3,7 @@ export type ProductCategory =
   | "Flavoured Milk"
   | "Curd & Cultured"
   | "Sweets"
-  | "Fats";
+  | "Ghee";
 
 export type Product = {
   slug: string;
@@ -15,33 +15,36 @@ export type Product = {
 };
 
 export const products: Product[] = [
+  // ── MILK ──────────────────────────────────────────────
   {
-    slug: "fresh-toned-milk",
-    name: "Fresh Toned Milk",
+    slug: "toned-milk",
+    name: "Toned Milk",
     category: "Milk",
     description:
       "Light, everyday milk with balanced fat for daily Indian households.",
     meta: "200ml · 500ml · 1L",
-    image: "/products/2.png",
+    image: "/products/tonedmilk.jpeg",
   },
   {
-    slug: "standardized-milk",
-    name: "Standardized Milk",
+    slug: "standardised-milk",
+    name: "Standardised Milk",
     category: "Milk",
     description:
-      "Consistent fat and SNF levels, ideal for tea, coffee and family use.",
+      "Consistent fat and SNF — rich, creamy milk ideal for tea, coffee and family use.",
     meta: "500ml · 1L",
-    image: "/products/3.png",
+    image: "/products/standardisedmilk.jpeg",
   },
   {
-    slug: "full-cream-milk",
-    name: "Full Cream Milk",
+    slug: "buffalo-milk",
+    name: "Buffalo Milk",
     category: "Milk",
     description:
-      "Rich, creamy milk with a full-bodied taste — a breakfast classic.",
+      "Full-bodied buffalo milk — perfect for curd setting, paneer and sweet preparations.",
     meta: "500ml · 1L",
-    image: "/products/4.png",
+    image: "/products/buffalomilk.jpeg",
   },
+
+  // ── FLAVOURED MILK ────────────────────────────────────
   {
     slug: "badam-milk",
     name: "Badam Milk",
@@ -80,13 +83,15 @@ export const products: Product[] = [
   },
   {
     slug: "kulfi-milk",
-    name: "Kulfi Flavoured Milk",
+    name: "Kulfi Milk",
     category: "Flavoured Milk",
     description:
       "All the notes of traditional kulfi — cardamom, nuts, slow-reduced milk — in a chilled bottle.",
     meta: "180ml · 200ml",
     image: "/products/Kulfi - Flavored Milk.png",
   },
+
+  // ── CURD & CULTURED ───────────────────────────────────
   {
     slug: "curd",
     name: "Curd",
@@ -94,62 +99,48 @@ export const products: Product[] = [
     description:
       "Thick, naturally set curd with a clean, homemade character.",
     meta: "200g · 400g · 1kg",
-    image: "/products/WhatsApp Image 2026-04-19 at 12.09.28.jpeg",
-  },
-  {
-    slug: "pot-curd",
-    name: "Pot Curd",
-    category: "Curd & Cultured",
-    description:
-      "Set in traditional earthen pots, with the mellow, creamy finish of old Karnataka kitchens.",
-    meta: "400g · 1kg",
-    image: "/products/WhatsApp Image 2026-04-19 at 12.10.18.jpeg",
-  },
-  {
-    slug: "fresh-curd",
-    name: "Fresh Curd",
-    category: "Curd & Cultured",
-    description:
-      "Delivered within hours of setting, for a bright and lively taste.",
-    meta: "200g · 400g",
-    image: "/products/WhatsApp Image 2026-04-19 at 12.10.18 (1).jpeg",
+    image: "/products/curd.jpeg",
   },
   {
     slug: "paneer",
     name: "Paneer",
     category: "Curd & Cultured",
     description:
-      "Soft, milky paneer pressed in small batches — never rubbery.",
+      "Soft, milky paneer pressed in small batches — never rubbery. Retail packs for home and a 1 kg block for kitchens and caterers.",
     meta: "200g · 500g · 1kg",
-    image: "/products/WhatsApp Image 2026-04-19 at 12.10.19.jpeg",
+    image: "/products/paneer.jpeg",
+  },
+  {
+    slug: "low-fat-paneer",
+    name: "Low-Fat Paneer",
+    category: "Curd & Cultured",
+    description:
+      "Soft-set paneer with a lighter fat profile — the same milky taste, half the richness.",
+    meta: "200g · 500g",
+    image: "/products/lowfatpaneer.jpeg",
   },
   {
     slug: "lassi",
     name: "Lassi",
     category: "Curd & Cultured",
     description:
-      "Thick, sweet curd drink — chilled, silky, lightly spiced.",
-    meta: "200ml · 500ml",
-    image: "/products/WhatsApp Image 2026-04-19 at 12.11.20.jpeg",
+      "Thick, sweet curd drink — chilled, silky, lightly spiced. Single-serve pouches and retail bottles.",
+    meta: "200ml pouch · 500ml bottle",
+    image: "/products/lassiclassic.jpeg",
   },
-  {
-    slug: "buttermilk",
-    name: "Buttermilk",
-    category: "Curd & Cultured",
-    description:
-      "Cooling masala buttermilk with curry leaves, ginger and a gentle salt.",
-    meta: "200ml · 500ml · 1L",
-    image: "/products/WhatsApp Image 2026-04-19 at 12.11.21.jpeg",
-  },
+
+  // ── FATS ──────────────────────────────────────────────
   {
     slug: "ghee",
     name: "Ghee",
-    category: "Fats",
+    category: "Ghee",
     description:
       "Golden, grainy, slow-cooked ghee from the cream of our own milk.",
     meta: "200ml · 500ml · 1L",
     image: "/products/Ghee Bottle.jpg.jpeg",
   },
+
+  // ── SWEETS ────────────────────────────────────────────
   {
     slug: "shrikhand",
     name: "Shrikhand",
@@ -166,16 +157,7 @@ export const products: Product[] = [
     description:
       "A soft, porous Mysore Pak, melt-in-mouth, hand-cut in small trays.",
     meta: "250g · 500g",
-    image: "/products/WhatsApp Image 2026-04-19 at 12.11.21 (1).jpeg",
-  },
-  {
-    slug: "khoa-mava",
-    name: "Khoa & Mava",
-    category: "Sweets",
-    description:
-      "Slow-reduced khoa for halwais and home kitchens that value the old way.",
-    meta: "250g · 500g · 1kg",
-    image: "/products/6.png",
+    image: "/products/mysore pak.png",
   },
   {
     slug: "dharwad-pedha",
@@ -185,6 +167,24 @@ export const products: Product[] = [
       "The iconic grainy pedha of North Karnataka — slow-cooked, gently caramelised.",
     meta: "250g · 500g",
     image: "/products/Dharwad pedha Box Mockup.jpg.jpeg",
+  },
+  {
+    slug: "doodh-pedha",
+    name: "Doodh Pedha",
+    category: "Sweets",
+    description:
+      "Classic reduced-milk pedha — soft, milky and lightly cardamom-scented.",
+    meta: "250g · 500g",
+    image: "/products/doodhpedha.png",
+  },
+  {
+    slug: "phika-pedha",
+    name: "Phika Pedha",
+    category: "Sweets",
+    description:
+      "Unsweetened khoa pedha — a pure, milky bite used in temples and traditional offerings.",
+    meta: "250g · 500g",
+    image: "/products/phikapedha.png",
   },
   {
     slug: "kaju-katli",

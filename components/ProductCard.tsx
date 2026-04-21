@@ -3,17 +3,17 @@ import type { Product } from "@/lib/data";
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
-    <article className="group card-base overflow-hidden p-6">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-md border border-line bg-gradient-to-br from-cream-100 via-cream-50 to-white">
+    <article className="group card-base overflow-hidden">
+      <div className="relative aspect-[4/5] overflow-hidden bg-cream-50">
         <Image
           src={product.image}
           alt={product.name}
           fill
           sizes="(min-width: 1024px) 25vw, (min-width: 768px) 50vw, 100vw"
-          className="object-contain p-4 transition-transform duration-500 ease-premium group-hover:scale-[1.04]"
+          className="object-contain transition-transform duration-500 ease-premium group-hover:scale-[1.04]"
         />
       </div>
-      <div className="mt-5">
+      <div className="p-6">
         <div className="text-[11px] font-semibold uppercase tracking-eyebrow text-gold-500">
           {product.category}
         </div>

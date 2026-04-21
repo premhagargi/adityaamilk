@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import SectionEyebrow from "@/components/SectionEyebrow";
-import SunMark from "@/components/SunMark";
 import {
   Phone,
   Mail,
@@ -20,12 +19,6 @@ export default function ContactPage() {
   return (
     <>
       <section className="relative overflow-hidden bg-cream-50 py-20">
-        <SunMark
-          variant="corner"
-          size={220}
-          rayColor="#D4AF37"
-          className="pointer-events-none absolute right-0 top-0 opacity-[0.14] -scale-x-100"
-        />
         <div className="container-x relative">
           <SectionEyebrow>Contact</SectionEyebrow>
           <h1 className="mt-6 max-w-[680px] font-display text-[48px] font-medium leading-tight text-blue-900 md:text-[56px]">
@@ -63,11 +56,12 @@ export default function ContactPage() {
                 <MapPin size={18} className="mt-1 flex-none text-gold-500" />
                 <div>
                   <div className="text-[12px] font-semibold uppercase tracking-eyebrow text-blue-900">
-                    Corporate Office
+                    Registered Office
                   </div>
                   <div className="mt-1 text-[15px] leading-relaxed text-ink-900">
-                    LIG 159, Mahantesh Nagar,<br />
-                    Belagavi – 590016, Karnataka
+                    Vijaynand Road Lines,<br />
+                    CTS. No. 4883, Fort Road,<br />
+                    Belagavi – 590001, Karnataka
                   </div>
                 </div>
               </div>

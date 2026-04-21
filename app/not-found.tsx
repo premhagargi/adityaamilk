@@ -1,17 +1,11 @@
 import Link from "next/link";
+import Image from "next/image";
 import SectionEyebrow from "@/components/SectionEyebrow";
-import SunMark from "@/components/SunMark";
 import { ArrowRight } from "lucide-react";
 
 export default function NotFound() {
   return (
     <section className="relative overflow-hidden bg-cream-50 py-32">
-      <SunMark
-        variant="corner"
-        size={260}
-        rayColor="#D4AF37"
-        className="pointer-events-none absolute left-0 top-10 opacity-[0.18]"
-      />
       <div className="container-x relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.2fr_1fr]">
         <div>
           <SectionEyebrow>404 · Page not found</SectionEyebrow>
@@ -40,8 +34,8 @@ export default function NotFound() {
               ["Products", "/products"],
               ["Achievements", "/achievements"],
               ["Find Parlour", "/find-parlour"],
+              ["Investor Desk", "/investor-desk"],
               ["Contact", "/contact"],
-              ["Terms", "/terms"],
             ].map(([label, href]) => (
               <Link
                 key={href}
@@ -56,16 +50,21 @@ export default function NotFound() {
           </div>
         </div>
 
-        <div className="relative hidden items-center justify-center lg:flex">
-          <SunMark
-            variant="seal"
-            size={320}
-            rayColor="#D4AF37"
-            bgColor="#27398F"
-            className="drop-shadow-xl"
-          />
-          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 font-display text-[120px] font-medium italic leading-none text-blue-900/10">
-            404
+        <div className="hidden lg:block">
+          <div className="relative overflow-hidden rounded-2xl border border-line shadow-lift">
+            <Image
+              src="/images/sunmark.png"
+              alt="Adityaa Milk brand mark"
+              width={1600}
+              height={300}
+              className="h-auto w-full object-cover"
+              priority
+            />
+            <div className="absolute inset-0 flex items-end justify-start p-8">
+              <div className="font-display text-[80px] font-medium italic leading-none text-cream-50/25">
+                404
+              </div>
+            </div>
           </div>
         </div>
       </div>

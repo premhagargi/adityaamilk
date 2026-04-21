@@ -1,19 +1,23 @@
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
-import SunMark from "./SunMark";
 
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-blue-900 text-white/80">
-      {/* Brand motif — rising sun, bleeding off the right edge */}
-      <SunMark
-        variant="corner"
-        size={260}
-        rayColor="#D4AF37"
-        className="pointer-events-none absolute right-0 top-0 opacity-[0.10] -scale-x-100"
-      />
-      <div className="container-x relative grid grid-cols-1 gap-12 py-20 md:grid-cols-2 lg:grid-cols-4">
+      {/* Brand banner — sun rises from the top-right of the footer */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 overflow-hidden md:h-40">
+        <Image
+          src="/images/sunmark.png"
+          alt=""
+          width={1600}
+          height={300}
+          aria-hidden
+          className="h-full w-full object-cover opacity-90"
+        />
+      </div>
+
+      <div className="container-x relative grid grid-cols-1 gap-12 pt-44 pb-20 md:grid-cols-2 lg:grid-cols-4 md:pt-52">
         {/* Brand column */}
         <div>
           <div className="flex items-center gap-3">
@@ -52,6 +56,7 @@ export default function Footer() {
               ["Products", "/products"],
               ["Achievements", "/achievements"],
               ["Find Parlour", "/find-parlour"],
+              ["Investor Desk", "/investor-desk"],
               ["Contact", "/contact"],
             ].map(([label, href]) => (
               <li key={href}>
@@ -75,9 +80,10 @@ export default function Footer() {
             <div className="flex gap-3">
               <MapPin size={14} className="mt-1 flex-none text-gold-400" />
               <div>
-                <div className="font-medium text-white">Corporate Office</div>
-                LIG 159, Mahantesh Nagar,<br />
-                Belagavi – 590016, Karnataka
+                <div className="font-medium text-white">Registered Office</div>
+                Vijaynand Road Lines,<br />
+                CTS. No. 4883, Fort Road,<br />
+                Belagavi – 590001, Karnataka
               </div>
             </div>
             <div className="flex gap-3">
@@ -101,7 +107,7 @@ export default function Footer() {
               href="tel:+919900255556"
               className="flex items-center gap-2 transition-colors hover:text-gold-400"
             >
-              <Phone size={14} className="text-gold-400" /> +91 99002 55556
+              <Phone size={14} className="text-gold-400" /> +91 9900255556
             </a>
             <a
               href="mailto:info@adityaamilk.com"
@@ -137,8 +143,8 @@ export default function Footer() {
 
       <div className="container-x flex flex-col items-start justify-between gap-4 py-6 text-[12px] text-white/60 md:flex-row md:items-center">
         <div>
-          © {new Date().getFullYear()} Vijaykant Dairy and Food Products Limited.
-          All rights reserved.
+          © {new Date().getFullYear()} Aditya Milk · Vijaykant Dairy &amp; Food
+          Products Limited. All rights reserved.
         </div>
         <div className="flex gap-6">
           <Link href="/terms" className="hover:text-gold-400">
