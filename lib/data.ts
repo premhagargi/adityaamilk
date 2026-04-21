@@ -117,7 +117,7 @@ export const products: Product[] = [
     description:
       "Soft-set paneer with a lighter fat profile — the same milky taste, half the richness.",
     meta: "200g · 500g",
-    image: "/products/lowfatpaneer.jpeg",
+    image: "/products/lowfatpaneer1.png",
   },
   {
     slug: "lassi",

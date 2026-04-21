@@ -63,8 +63,8 @@ export default function Header() {
           <Image
             src="/images/adityaalogo.png"
             alt="Adityaa Milk"
-            width={96}
-            height={96}
+            width={80}
+            height={80}
             priority
             className="h-20 w-auto object-contain md:h-[84px]"
           />
