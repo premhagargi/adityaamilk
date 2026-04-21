@@ -67,13 +67,6 @@ export default function Header() {
             priority
             className="h-10 w-10 object-contain"
           />
-          <span className="font-display text-[19px] font-medium leading-none tracking-tight text-blue-900">
-            Adityaa Milk
-          </span>
-          <span className="hidden h-5 w-px bg-line xl:block" />
-          <span className="hidden text-[10.5px] font-semibold uppercase leading-none tracking-eyebrow text-gold-500 xl:inline">
-            Quality · Health · Hygiene
-          </span>
         </Link>
 
         <nav
