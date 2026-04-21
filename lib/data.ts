@@ -108,7 +108,7 @@ export const products: Product[] = [
     description:
       "Soft, milky paneer pressed in small batches — never rubbery. Retail packs for home and a 1 kg block for kitchens and caterers.",
     meta: "200g · 500g · 1kg",
-    image: "/products/paneer.jpeg",
+    image: "/products/paneer-removebg-preview.png",
   },
   {
     slug: "low-fat-paneer",
@@ -137,18 +137,27 @@ export const products: Product[] = [
     description:
       "Golden, grainy, slow-cooked ghee from the cream of our own milk.",
     meta: "200ml · 500ml · 1L",
-    image: "/products/Ghee Bottle.jpg.jpeg",
+    image: "/products/Ghee_Bottle.jpg-removebg-preview.png",
   },
 
   // ── SWEETS ────────────────────────────────────────────
   {
-    slug: "shrikhand",
-    name: "Shrikhand",
+    slug: "elaichi-shrikhand",
+    name: "Elaichi Shrikhand",
     category: "Sweets",
     description:
-      "Hung curd sweetened gently and perfumed with saffron and cardamom.",
+      "Hung curd sweetened gently and perfumed with green cardamom — the classic Maharashtrian way.",
     meta: "250g · 500g",
-    image: "/products/Shrikand 1.jpeg",
+    image: "/products/elaichi shrikhand.jpeg",
+  },
+  {
+    slug: "mango-shrikhand",
+    name: "Mango Shrikhand",
+    category: "Sweets",
+    description:
+      "Seasonal Alphonso pulp folded into hung curd — thick, fragrant and naturally sweet.",
+    meta: "250g · 500g",
+    image: "/products/mango shrikhand.jpeg",
   },
   {
     slug: "mysore-pak",
@@ -166,7 +175,7 @@ export const products: Product[] = [
     description:
       "The iconic grainy pedha of North Karnataka — slow-cooked, gently caramelised.",
     meta: "250g · 500g",
-    image: "/products/Dharwad pedha Box Mockup.jpg.jpeg",
+    image: "/products/Dharwad_pedha_Box_Mockup.jpg-removebg-preview.png",
   },
   {
     slug: "doodh-pedha",
@@ -202,7 +211,7 @@ export const products: Product[] = [
     description:
       "Belagavi's beloved caramelised milk sweet, cooked down the slow, old way.",
     meta: "250g · 500g",
-    image: "/products/Kunda Box Mockup.jpg.jpeg",
+    image: "/products/Kunda_Box_Mockup.jpg-removebg-preview.png",
   },
   {
     slug: "milk-cake",
@@ -211,7 +220,7 @@ export const products: Product[] = [
     description:
       "Dense, grainy milk cake with a deep, roasted-milk character.",
     meta: "250g · 500g",
-    image: "/products/Milk cake Box Mockup.jpg.jpeg",
+    image: "/products/Milk_cake_Box_Mockup.jpg-removebg-preview.png",
   },
 ];
 

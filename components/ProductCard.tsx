@@ -3,7 +3,7 @@ import type { Product } from "@/lib/data";
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
-    <article className="group card-base overflow-hidden">
+    <article className="group card-base flex h-full flex-col overflow-hidden">
       <div className="relative aspect-[4/5] overflow-hidden bg-cream-50">
         <Image
           src={product.image}
@@ -13,7 +13,7 @@ export default function ProductCard({ product }: { product: Product }) {
           className="object-contain transition-transform duration-500 ease-premium group-hover:scale-[1.04]"
         />
       </div>
-      <div className="p-6">
+      <div className="flex flex-1 flex-col p-6">
         <div className="text-[11px] font-semibold uppercase tracking-eyebrow text-gold-500">
           {product.category}
         </div>
@@ -24,7 +24,7 @@ export default function ProductCard({ product }: { product: Product }) {
         <p className="mt-2 text-[14px] leading-relaxed text-ink-600">
           {product.description}
         </p>
-        <div className="mt-4 text-[12px] uppercase tracking-[0.08em] text-ink-400">
+        <div className="mt-auto pt-4 text-[12px] uppercase tracking-[0.08em] text-ink-400">
           Available in · {product.meta}
         </div>
       </div>

@@ -5,14 +5,7 @@ import SectionEyebrow from "@/components/SectionEyebrow";
 import ProductCard from "@/components/ProductCard";
 import Reveal from "@/components/Reveal";
 import { products, achievements } from "@/lib/data";
-import {
-  ShieldCheck,
-  Award,
-  Factory,
-  MapPin,
-  Search,
-  ArrowRight,
-} from "lucide-react";
+import { ShieldCheck, Award, Factory, ArrowRight } from "lucide-react";
 
 const trustPoints = [
   "ISO 22000:2005",
@@ -165,7 +158,7 @@ export default function HomePage() {
 
           <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
             {featured.map((p, i) => (
-              <Reveal key={p.slug} delay={i * 0.08}>
+              <Reveal key={p.slug} delay={i * 0.08} className="h-full">
                 <ProductCard product={p} />
               </Reveal>
             ))}
@@ -268,63 +261,6 @@ export default function HomePage() {
             >
               See all achievements <ArrowRight size={16} />
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* FIND PARLOUR TEASER */}
-      <section className="bg-cream-50 py-28">
-        <div className="container-x grid grid-cols-1 items-center gap-14 lg:grid-cols-[1fr_1.2fr]">
-          <div className="flex items-center justify-center">
-            <div className="relative aspect-square w-full max-w-[360px]">
-              {/* stylised karnataka outline */}
-              <svg viewBox="0 0 200 200" className="h-full w-full">
-                <path
-                  d="M40 40 L160 50 L170 90 L150 130 L170 160 L120 170 L80 160 L50 140 L30 100 Z"
-                  fill="#F8F5ED"
-                  stroke="#27398F"
-                  strokeWidth="1.2"
-                />
-                <circle cx="70" cy="80" r="5" fill="#C9A227" />
-                <circle cx="70" cy="80" r="10" fill="none" stroke="#C9A227" strokeOpacity="0.4" />
-                <text
-                  x="80"
-                  y="84"
-                  fontSize="9"
-                  fill="#27398F"
-                  fontWeight="600"
-                >
-                  Belagavi
-                </text>
-              </svg>
-            </div>
-          </div>
-          <div>
-            <SectionEyebrow>Find A Parlour</SectionEyebrow>
-            <h2 className="mt-5 font-display text-[38px] font-medium leading-tight text-blue-900">
-              Find Adityaa near you.
-            </h2>
-            <p className="mt-4 max-w-[420px] text-[16px] leading-relaxed text-ink-600">
-              600+ retail touchpoints across North Karnataka — parlours, retail
-              shelves and institutional partners.
-            </p>
-            <form className="mt-8 flex max-w-md overflow-hidden rounded-lg border border-line bg-white shadow-soft">
-              <div className="flex items-center pl-4 text-ink-400">
-                <MapPin size={16} />
-              </div>
-              <input
-                type="text"
-                placeholder="Enter pincode or city"
-                className="flex-1 bg-transparent px-3 py-3 text-[15px] focus:outline-none"
-              />
-              <Link
-                href="/find-parlour"
-                className="flex items-center gap-2 bg-blue-900 px-5 text-[14px] font-medium text-white"
-              >
-                <Search size={16} />
-                Find parlour
-              </Link>
-            </form>
           </div>
         </div>
       </section>
