@@ -36,6 +36,37 @@ function titleCase(str: string) {
     .join(" ");
 }
 
+// Build a Google-Maps-friendly query for a parlour.
+// Strips boilerplate ("Adityaa Milk Ice Cream Parlour"), labels like
+// "Tq:", "District:", "Pin code", then anchors with pincode, city, state — so
+// generic petrol-pump names don't cause Google to fall back to Belagavi HQ.
+function buildMapsQuery(p: IndexedParlour) {
+  const cleanAddress = p.address
+    .replace(
+      /^(\([^)]*\)\s*)?Adityaa\s+(?:Milk\s+)?Ice\s*Cream\s*Parlour[.,\s]*/i,
+      ""
+    )
+    .replace(/\bTq[.:]?\s*[^,.]+/gi, "")
+    .replace(/\bDistrict[.:]?\s*[^,.]+/gi, "")
+    .replace(/\bDist[.:]?\s*[^,.]+/gi, "")
+    .replace(/\bPin\s*(?:code|Code)?\.?\s*\d{6}/gi, "")
+    .replace(/\b\d{6}\b/g, "") // pincode added separately below
+    .replace(/\s*,\s*,+/g, ",")
+    .replace(/[,.\s]+$/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const parts = [
+    cleanAddress,
+    p.pincode,
+    titleCase(p.city),
+    titleCase(p.state),
+    "India",
+  ].filter(Boolean);
+
+  return parts.join(", ");
+}
+
 export default function FindParlourPage() {
   const [query, setQuery] = useState("");
   const [activeId, setActiveId] = useState<string>(indexed[0].id);
@@ -168,7 +199,7 @@ export default function FindParlourPage() {
                         </a>
                         <a
                           href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                            `${p.name} ${p.address}`
+                            buildMapsQuery(p)
                           )}`}
                           target="_blank"
                           rel="noopener noreferrer"
@@ -190,7 +221,7 @@ export default function FindParlourPage() {
                 key={active.id}
                 title={`Map · ${titleCase(active.name)}, ${titleCase(active.city)}`}
                 src={`https://www.google.com/maps?q=${encodeURIComponent(
-                  `${active.name}, ${active.address}`
+                  buildMapsQuery(active)
                 )}&output=embed`}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -211,7 +242,7 @@ export default function FindParlourPage() {
                   <div className="mt-1 text-ink-600">{active.address}</div>
                   <a
                     href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-                      `${active.name}, ${active.address}`
+                      buildMapsQuery(active)
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
