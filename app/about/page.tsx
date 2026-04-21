@@ -84,6 +84,14 @@ export default function AboutPage() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden bg-cream-50 py-20 md:py-24">
+        <Image
+          src="/images/sunmark-removebg-preview.png"
+          alt=""
+          width={500}
+          height={250}
+          aria-hidden
+          className="pointer-events-none absolute -right-10 top-6 h-auto w-[180px] opacity-30 md:w-[260px]"
+        />
         <div className="container-x relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.15fr_1fr]">
           <div>
             <SectionEyebrow>About Adityaa Milk</SectionEyebrow>
@@ -224,16 +232,14 @@ export default function AboutPage() {
 
       {/* FARMER -> CONSUMER */}
       <section className="relative overflow-hidden bg-blue-900 py-28 text-cream-50">
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 overflow-hidden md:h-48">
-          <Image
-            src="/images/sunmark.png"
-            alt=""
-            width={1600}
-            height={300}
-            aria-hidden
-            className="h-full w-full object-cover"
-          />
-        </div>
+        <Image
+          src="/images/sunmark-removebg-preview.png"
+          alt=""
+          width={800}
+          height={400}
+          aria-hidden
+          className="pointer-events-none absolute -bottom-10 -left-14 h-auto w-[280px] opacity-70 md:w-[440px]"
+        />
         <div className="container-x relative">
           <div className="max-w-prose">
             <SectionEyebrow tone="dark">Farmer to Consumer</SectionEyebrow>

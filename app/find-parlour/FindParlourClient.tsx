@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Image from "next/image";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { parlours, type Parlour } from "@/lib/data";
 import { MapPin, Search, Navigation, Phone } from "lucide-react";
@@ -54,6 +55,14 @@ export default function FindParlourPage() {
   return (
     <>
       <section className="relative overflow-hidden bg-cream-50 py-16">
+        <Image
+          src="/images/sunmark-removebg-preview.png"
+          alt=""
+          width={500}
+          height={250}
+          aria-hidden
+          className="pointer-events-none absolute -right-10 top-4 h-auto w-[180px] opacity-30 md:w-[240px]"
+        />
         <div className="container-x relative">
           <SectionEyebrow>Find A Parlour</SectionEyebrow>
           <h1 className="mt-6 max-w-[700px] font-display text-[48px] font-medium leading-tight text-blue-900 md:text-[56px]">

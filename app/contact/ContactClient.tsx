@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import {
   Phone,
@@ -19,6 +20,14 @@ export default function ContactPage() {
   return (
     <>
       <section className="relative overflow-hidden bg-cream-50 py-20">
+        <Image
+          src="/images/sunmark-removebg-preview.png"
+          alt=""
+          width={500}
+          height={250}
+          aria-hidden
+          className="pointer-events-none absolute -right-10 top-6 h-auto w-[180px] opacity-30 md:w-[260px]"
+        />
         <div className="container-x relative">
           <SectionEyebrow>Contact</SectionEyebrow>
           <h1 className="mt-6 max-w-[680px] font-display text-[48px] font-medium leading-tight text-blue-900 md:text-[56px]">

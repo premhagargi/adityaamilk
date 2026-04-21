@@ -32,6 +32,14 @@ export default function HomePage() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden bg-cream-50">
+        <Image
+          src="/images/sunmark-removebg-preview.png"
+          alt=""
+          width={600}
+          height={300}
+          aria-hidden
+          className="pointer-events-none absolute -right-12 top-4 h-auto w-[200px] opacity-30 md:w-[320px] lg:top-10 lg:w-[380px]"
+        />
         <div className="container-x grid min-h-[88vh] grid-cols-1 items-center gap-12 py-24 lg:grid-cols-[1.15fr_1fr]">
           <div>
             <SectionEyebrow>Since 1994 · Belagavi</SectionEyebrow>
@@ -210,17 +218,22 @@ export default function HomePage() {
 
       {/* ACHIEVEMENTS TEASER */}
       <section className="relative overflow-hidden bg-blue-900 py-28 text-cream-50">
-        {/* Brand banner — rising sun motif, bleeds to the bottom edge */}
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-36 overflow-hidden md:h-48">
-          <Image
-            src="/images/sunmark.png"
-            alt=""
-            width={1600}
-            height={300}
-            aria-hidden
-            className="h-full w-full object-cover"
-          />
-        </div>
+        <Image
+          src="/images/sunmark-removebg-preview.png"
+          alt=""
+          width={800}
+          height={400}
+          aria-hidden
+          className="pointer-events-none absolute -bottom-12 -right-16 h-auto w-[280px] opacity-70 md:w-[460px]"
+        />
+        <Image
+          src="/images/sunmark-removebg-preview.png"
+          alt=""
+          width={400}
+          height={200}
+          aria-hidden
+          className="pointer-events-none absolute -top-10 left-4 hidden h-auto w-[180px] opacity-25 md:block"
+        />
         <div className="container-x relative">
           <div className="flex flex-col items-start justify-between gap-5 md:flex-row md:items-end">
             <div>
@@ -267,6 +280,14 @@ export default function HomePage() {
 
       {/* ENQUIRY CTA */}
       <section className="relative overflow-hidden bg-cream-200 py-24">
+        <Image
+          src="/images/sunmark-removebg-preview.png"
+          alt=""
+          width={400}
+          height={200}
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-6 h-auto w-[140px] -translate-x-1/2 opacity-40 md:w-[180px]"
+        />
         <div className="container-x relative text-center">
           <SectionEyebrow>Work with Us</SectionEyebrow>
           <h2 className="mx-auto mt-5 max-w-[720px] font-display text-[40px] font-medium leading-tight text-blue-900">

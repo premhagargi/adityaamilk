@@ -50,21 +50,17 @@ export default function NotFound() {
           </div>
         </div>
 
-        <div className="hidden lg:block">
-          <div className="relative overflow-hidden rounded-2xl border border-line shadow-lift">
-            <Image
-              src="/images/sunmark.png"
-              alt="Adityaa Milk brand mark"
-              width={1600}
-              height={300}
-              className="h-auto w-full object-cover"
-              priority
-            />
-            <div className="absolute inset-0 flex items-end justify-start p-8">
-              <div className="font-display text-[80px] font-medium italic leading-none text-cream-50/25">
-                404
-              </div>
-            </div>
+        <div className="relative hidden lg:block">
+          <Image
+            src="/images/sunmark-removebg-preview.png"
+            alt="Adityaa Milk brand mark"
+            width={800}
+            height={400}
+            className="h-auto w-full max-w-[420px]"
+            priority
+          />
+          <div className="mt-4 text-center font-display text-[96px] font-medium italic leading-none text-blue-900/10">
+            404
           </div>
         </div>
       </div>

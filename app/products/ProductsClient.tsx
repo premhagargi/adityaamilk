@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import ProductCard from "@/components/ProductCard";
 import SectionEyebrow from "@/components/SectionEyebrow";
 import { products } from "@/lib/data";
@@ -23,6 +24,14 @@ export default function ProductsPage() {
   return (
     <>
       <section className="relative overflow-hidden bg-cream-50 py-20">
+        <Image
+          src="/images/sunmark-removebg-preview.png"
+          alt=""
+          width={500}
+          height={250}
+          aria-hidden
+          className="pointer-events-none absolute -right-10 top-6 h-auto w-[180px] opacity-30 md:w-[260px]"
+        />
         <div className="container-x relative">
           <SectionEyebrow>Our Products</SectionEyebrow>
           <div className="mt-6 flex flex-col justify-between gap-10 md:flex-row md:items-end">
