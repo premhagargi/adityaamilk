@@ -32,14 +32,6 @@ export default function HomePage() {
     <>
       {/* HERO */}
       <section className="relative overflow-hidden bg-cream-50">
-        <Image
-          src="/images/sunmark-removebg-preview.png"
-          alt=""
-          width={600}
-          height={300}
-          aria-hidden
-          className="pointer-events-none absolute -right-12 top-4 h-auto w-[200px] opacity-30 md:w-[320px] lg:top-10 lg:w-[380px]"
-        />
         <div className="container-x grid min-h-[88vh] grid-cols-1 items-center gap-12 py-24 lg:grid-cols-[1.15fr_1fr]">
           <div>
             <SectionEyebrow>Since 1994 · Belagavi</SectionEyebrow>
@@ -283,10 +275,10 @@ export default function HomePage() {
         <Image
           src="/images/sunmark-removebg-preview.png"
           alt=""
-          width={400}
-          height={200}
+          width={600}
+          height={300}
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-6 h-auto w-[140px] -translate-x-1/2 opacity-40 md:w-[180px]"
+          className="pointer-events-none absolute -bottom-10 -right-14 h-auto w-[240px] opacity-45 md:w-[360px]"
         />
         <div className="container-x relative text-center">
           <SectionEyebrow>Work with Us</SectionEyebrow>

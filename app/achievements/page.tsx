@@ -28,10 +28,10 @@ export default function AchievementsPage() {
         <Image
           src="/images/sunmark-removebg-preview.png"
           alt=""
-          width={500}
-          height={250}
+          width={700}
+          height={350}
           aria-hidden
-          className="pointer-events-none absolute -right-10 top-6 h-auto w-[180px] opacity-30 md:w-[260px]"
+          className="pointer-events-none absolute -bottom-12 -right-14 h-auto w-[240px] opacity-40 md:w-[360px]"
         />
         <div className="container-x relative">
           <SectionEyebrow>Milestones</SectionEyebrow>
