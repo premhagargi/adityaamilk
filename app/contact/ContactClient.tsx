@@ -14,8 +14,43 @@ import {
   Navigation,
 } from "lucide-react";
 
+const CONTACT_EMAIL = "info@adityaamilk.com";
+
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    const name = (fd.get("name") ?? "").toString().trim();
+    const company = (fd.get("company") ?? "").toString().trim();
+    const email = (fd.get("email") ?? "").toString().trim();
+    const phone = (fd.get("phone") ?? "").toString().trim();
+    const enquiryType = (fd.get("enquiryType") ?? "").toString().trim();
+    const message = (fd.get("message") ?? "").toString().trim();
+
+    const subject = `Enquiry${enquiryType ? ` · ${enquiryType}` : ""}${name ? ` — ${name}` : ""}`;
+    const body = [
+      `Name: ${name || "—"}`,
+      `Company: ${company || "—"}`,
+      `Email: ${email || "—"}`,
+      `Phone: ${phone || "—"}`,
+      `Enquiry Type: ${enquiryType || "—"}`,
+      "",
+      "Message:",
+      message || "—",
+      "",
+      "— Sent from adityaamilk.com contact form",
+    ].join("\n");
+
+    const mailto = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+
+    // Open the user's default mail app with the draft prefilled
+    window.location.href = mailto;
+    setSubmitted(true);
+  };
 
   return (
     <>
@@ -118,31 +153,41 @@ export default function ContactPage() {
                   <Check size={24} className="text-gold-500" />
                 </div>
                 <h3 className="mt-6 font-display text-[28px] font-medium text-blue-900">
-                  Thank you.
+                  Draft ready.
                 </h3>
                 <p className="mt-3 max-w-sm text-[15px] text-ink-600">
-                  We've received your enquiry and will be in touch within one
+                  Your mail app should have opened with the enquiry drafted
+                  to{" "}
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="text-blue-900 underline decoration-gold-500 underline-offset-4 hover:text-gold-500"
+                  >
+                    {CONTACT_EMAIL}
+                  </a>
+                  . Please review and hit send — we'll reply within one
                   business day.
                 </p>
+                <button
+                  type="button"
+                  onClick={() => setSubmitted(false)}
+                  className="mt-6 text-[13px] font-medium text-blue-900 underline decoration-gold-500 underline-offset-4 hover:text-gold-500"
+                >
+                  Send another enquiry
+                </button>
               </div>
             ) : (
-              <form
-                onSubmit={(e) => {
-                  e.preventDefault();
-                  setSubmitted(true);
-                }}
-                className="space-y-5"
-              >
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                  <Field label="Name" required />
-                  <Field label="Company" hint="(optional)" />
+                  <Field label="Name" name="name" required />
+                  <Field label="Company" name="company" hint="(optional)" />
                 </div>
                 <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                  <Field label="Email" type="email" required />
-                  <Field label="Phone" type="tel" required />
+                  <Field label="Email" name="email" type="email" required />
+                  <Field label="Phone" name="phone" type="tel" required />
                 </div>
                 <Select
                   label="Enquiry Type"
+                  name="enquiryType"
                   options={[
                     "Dealership",
                     "B2B Supply",
@@ -151,13 +196,14 @@ export default function ContactPage() {
                     "Other",
                   ]}
                 />
-                <Field label="Message" textarea required />
+                <Field label="Message" name="message" textarea required />
 
                 <button type="submit" className="btn-primary w-full md:w-auto">
                   Send enquiry
                 </button>
                 <p className="text-[12.5px] text-ink-400">
-                  We typically respond within 1 business day.
+                  Submitting opens your mail app with the enquiry drafted to{" "}
+                  {CONTACT_EMAIL}. We typically respond within 1 business day.
                 </p>
               </form>
             )}
@@ -233,12 +279,14 @@ export default function ContactPage() {
 
 function Field({
   label,
+  name,
   type = "text",
   required,
   textarea,
   hint,
 }: {
   label: string;
+  name: string;
   type?: string;
   required?: boolean;
   textarea?: boolean;
@@ -252,12 +300,14 @@ function Field({
       </span>
       {textarea ? (
         <textarea
+          name={name}
           rows={4}
           required={required}
           className="w-full rounded-md border border-line bg-white px-4 py-3 text-[15px] text-ink-900 outline-none transition-all focus:border-blue-900 focus:ring-2 focus:ring-gold-400/40"
         />
       ) : (
         <input
+          name={name}
           type={type}
           required={required}
           className="w-full rounded-md border border-line bg-white px-4 py-3 text-[15px] text-ink-900 outline-none transition-all focus:border-blue-900 focus:ring-2 focus:ring-gold-400/40"
@@ -267,13 +317,22 @@ function Field({
   );
 }
 
-function Select({ label, options }: { label: string; options: string[] }) {
+function Select({
+  label,
+  name,
+  options,
+}: {
+  label: string;
+  name: string;
+  options: string[];
+}) {
   return (
     <label className="block">
       <span className="mb-2 block text-[12px] font-semibold uppercase tracking-eyebrow text-blue-900">
         {label}
       </span>
       <select
+        name={name}
         className="w-full rounded-md border border-line bg-white px-4 py-3 text-[15px] text-ink-900 outline-none transition-all focus:border-blue-900 focus:ring-2 focus:ring-gold-400/40"
         defaultValue=""
       >

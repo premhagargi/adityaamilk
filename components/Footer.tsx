@@ -5,25 +5,7 @@ import { MapPin, Phone, Mail, ArrowRight } from "lucide-react";
 export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-blue-900 text-white/80">
-      {/* Brand mark — sun rises from the right edge of the footer */}
-      <Image
-        src="/images/sunmark-removebg-preview.png"
-        alt=""
-        width={600}
-        height={300}
-        aria-hidden
-        className="pointer-events-none absolute -top-6 right-0 h-auto w-[260px] opacity-80 md:-top-10 md:w-[380px]"
-      />
-      <Image
-        src="/images/sunmark-removebg-preview.png"
-        alt=""
-        width={400}
-        height={200}
-        aria-hidden
-        className="pointer-events-none absolute -bottom-4 left-8 hidden h-auto w-[160px] opacity-25 md:block"
-      />
-
-      <div className="container-x relative grid grid-cols-1 gap-12 pt-28 pb-20 md:grid-cols-2 lg:grid-cols-4 md:pt-36">
+      <div className="container-x relative grid grid-cols-1 gap-12 py-20 md:grid-cols-2 lg:grid-cols-4">
         {/* Brand column */}
         <div>
           <div className="flex items-center gap-3">

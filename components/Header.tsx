@@ -8,7 +8,6 @@ import { Phone, Menu, X } from "lucide-react";
 import { useLenis } from "lenis/react";
 
 const nav = [
-  { href: "/", label: "Home" },
   { href: "/about", label: "About Us" },
   { href: "/products", label: "Products" },
   { href: "/achievements", label: "Achievements" },
@@ -63,8 +62,8 @@ export default function Header() {
           <Image
             src="/images/adityaalogo.png"
             alt="Adityaa Milk"
-            width={80}
-            height={80}
+            width={65}
+            height={65}
             priority
             className="h-20 w-auto object-contain md:h-[84px]"
           />
