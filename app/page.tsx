@@ -186,13 +186,18 @@ export default function HomePage() {
             </p>
           </Reveal>
 
-          <div className="relative mt-16">
-            {/* dashed connector */}
-            <div className="absolute left-0 right-0 top-7 hidden h-px border-t border-dashed border-gold-500/40 md:block" />
+          <div className="mt-16">
             <div className="grid grid-cols-2 gap-10 md:grid-cols-5">
               {qualityChain.map((step, i) => (
                 <Reveal key={step.label} delay={i * 0.1} className="relative">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-full border border-gold-500/50 bg-cream-50 font-display text-lg text-blue-900">
+                  {/* Connector line to the next step — omitted after the last */}
+                  {i < qualityChain.length - 1 && (
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute left-14 -right-10 top-7 hidden h-px border-t border-dashed border-gold-500/40 md:block"
+                    />
+                  )}
+                  <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full border border-gold-500/50 bg-cream-50 font-display text-lg text-blue-900">
                     {String(i + 1).padStart(2, "0")}
                   </div>
                   <h3 className="mt-5 font-display text-[18px] font-medium text-blue-900">

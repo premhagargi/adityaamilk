@@ -4,7 +4,7 @@ import type { Product } from "@/lib/data";
 export default function ProductCard({ product }: { product: Product }) {
   return (
     <article className="group card-base flex h-full flex-col overflow-hidden">
-      <div className="relative aspect-[4/5] overflow-hidden bg-cream-50">
+      <div className="relative aspect-[4/5] overflow-hidden">
         <Image
           src={product.image}
           alt={product.name}
